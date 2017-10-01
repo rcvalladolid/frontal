@@ -1,6 +1,6 @@
 <%-- 
     Document   : login
-    Created on : 23/06/2016, 12:42:13 PM
+    Created on : 03/10/2017, 12:42:13 PM
     Author     : rcvalladolid
 --%>
 
@@ -14,7 +14,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="description" content="Aplicativo para indicadores de Docentes">
         <meta name="author" content="Roberto Valladolid">
-        <title>SVIED | Sistema de Visualización de Indicadores Estratégicos de Docentes</title>
+        <title>LRS | Learning Record Store</title>
         <!--Icono de la página-->
         <link href="<c:url value="/recursos/app/img/favicon.ico" />" rel="shortcut icon">
         <!-- Para que el navegador sea sensible al ancho de la pantalla -->
@@ -46,8 +46,8 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="http://gestiondatos.utpl.edu.ec/" title="UGDA | Unidad de Gestión de Datos Académicos">                        
-                        <img src="<c:url value="/recursos/app/img/utpl_ugda.png" />" alt="UTPL">
+                    <a class="navbar-brand" href="http://gestiondatos.utpl.edu.ec/" title="UTPL | Learning Record Store">                        
+                        <img src="<c:url value="/recursos/app/img/utpl_lrs.png" />" alt="UTPL">
                     </a>
                 </div>                
             </div>
@@ -65,7 +65,7 @@
                     </div>      
 
                     <br><br>
-                    <h3><p class="text-center text-bold">Sistema de Visualización de Indicadores Estratégicos de Docentes - SVIED</p></h3>
+                    <h3><p class="text-center text-bold">Sistema de Visualización de Experiencias de Aprendizaje de la UTPL</p></h3>
                     <br><br><br><br>
 
                     <div class="row">
@@ -127,19 +127,16 @@
                             <div class="form-box">
                                 <div class="form-top">
                                     <div class="form-top-left">
-                                        <h3>Indicadores Estratégicos de Docentes:</h3>
-                                        <p>Brindamos información en los siguientes indicadores.</p>
+                                        <h3>Indicadores de Experiencia de Aprendizaje:</h3>
+                                        <p>Brindamos información en los siguientes indicadores del Eva.</p>
                                     </div>
                                     <br>
                                 </div>
                                 <div class="form-bottom">
                                     <ul class="list-unstyled" style="line-height: 2">                                        
-                                        <li><span class="fa fa-check text-yellow"></span> Seguimiento académico al docente M.A.D.</li>
-                                        <li><span class="fa fa-check text-yellow"></span> Planes académicos Modalidad Presencial.</li>                                        
-                                        <!--<li><span class="fa fa-check text-yellow"></span> Registro de notas.</li>-->
-                                        <li><span class="fa fa-check text-yellow"></span> Carga académica.</li>
-                                        <li><span class="fa fa-check text-yellow"></span> Perfíles académicos.</li>
-                                        <li><span class="fa fa-check text-yellow"></span> Distributivo docente.</li>
+                                        <li><span class="fa fa-check text-yellow"></span> Anuncios Académicos.</li>
+                                        <li><span class="fa fa-check text-yellow"></span> Foros Académicos.</li>                                                                                
+                                        <li><span class="fa fa-check text-yellow"></span> Chats Académicos.</li>                                        
                                     </ul>
                                 </div>
                             </div>
@@ -154,10 +151,10 @@
                                         <span aria-hidden="true">×</span>
                                         <span class="sr-only">Cerar</span>
                                     </button>
-                                    <h4 class="modal-title">Solicite un rol dentro del aplicativo SVIED.</h4>
+                                    <h4 class="modal-title">Solicite un rol dentro del aplicativo:</h4>
                                 </div>
                                 <div class="modal-body">
-                                    <p>Envíe un correo electrónico a <a href="#">datos@utpl.edu.ec</a> con sus datos personales solicitando el acceso a cualquier indicador del aplicativo</p>
+                                    <p>Envíe un correo electrónico a <a href="#">rcvalladolid@utpl.edu.ec</a> con sus datos personales solicitando el acceso a cualquier indicador del aplicativo</p>
                                 </div>
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>                                    
