@@ -1,0 +1,101 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 01/09/2017 12:34:09 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="ec.edu.utpl.svied.model.TdiModalidad" table="TDI_MODALIDAD" schema="ESQ_SIEC" optimistic-lock="version">
+        <comment>Tabla de modalidad de SIIN con las equivalencias de otros sistemas a integrar</comment>
+        <id name="moId" type="big_decimal">
+            <column name="MO_ID" precision="22" scale="0" />
+            <generator class="assigned" />
+        </id>
+        <property name="moNombre" type="string">
+            <column name="MO_NOMBRE" length="100" not-null="true">
+                <comment>Nombre Modalidad</comment>
+            </column>
+        </property>
+        <property name="moEquIdNsga" type="big_decimal">
+            <column name="MO_EQU_ID_NSGA" precision="22" scale="0">
+                <comment>Indica el ID de la Equivalencia de la Modalidad en el NSGA</comment>
+            </column>
+        </property>
+        <property name="moEquNombreNsga" type="string">
+            <column name="MO_EQU_NOMBRE_NSGA" length="100">
+                <comment>Indica el Nombre de la Equivalencia de la Modalidad en el NSGA</comment>
+            </column>
+        </property>
+        <property name="moEquIdSga" type="big_decimal">
+            <column name="MO_EQU_ID_SGA" precision="22" scale="0">
+                <comment>Indica el ID de la Equivalencia de la Modalidad en el SGA</comment>
+            </column>
+        </property>
+        <property name="moEquNombreSga" type="string">
+            <column name="MO_EQU_NOMBRE_SGA" length="100">
+                <comment>Indica el Nombre de la Equivalencia de la Modalidad en el SGA</comment>
+            </column>
+        </property>
+        <property name="moEquIdEva" type="big_decimal">
+            <column name="MO_EQU_ID_EVA" precision="22" scale="0">
+                <comment>Indica el ID de la Equivalencia de la Modalidad en el EVA</comment>
+            </column>
+        </property>
+        <property name="moEquNombreEva" type="string">
+            <column name="MO_EQU_NOMBRE_EVA" length="100">
+                <comment>Indica el Nombre de la Equivalencia de la Modalidad en el EVA</comment>
+            </column>
+        </property>
+        <property name="moFechaCreacion" type="date">
+            <column name="MO_FECHA_CREACION" length="7" not-null="true">
+                <comment>Indica la Fecha de creaci&#243;n de la modalidad en el SIIN</comment>
+            </column>
+        </property>
+        <property name="moFechaActualizacion" type="date">
+            <column name="MO_FECHA_ACTUALIZACION" length="7">
+                <comment>Indica la Fecha de actualizaci&#243;n de la modalidad en el SIIN</comment>
+            </column>
+        </property>
+        <property name="moVigencia" type="string">
+            <column name="MO_VIGENCIA" length="1" not-null="true">
+                <comment>Indica si la modalidad esta vigente o no. S:Si, N:No, Por defecto "S":SI</comment>
+            </column>
+        </property>
+        <property name="moEquiIdExalumnos" type="big_decimal">
+            <column name="MO_EQUI_ID_EXALUMNOS" precision="22" scale="0">
+                <comment>Identificador de la bd de exalumnos</comment>
+            </column>
+        </property>
+        <property name="moEquiNombreExalumnos" type="string">
+            <column name="MO_EQUI_NOMBRE_EXALUMNOS" length="50" />
+        </property>
+        <set name="tdiPeriodoDetalles" table="TDI_PERIODO_DETALLE" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="MO_ID" precision="22" scale="0" />
+            </key>
+            <one-to-many class="ec.edu.utpl.svied.model.TdiPeriodoDetalle" />
+        </set>
+        <set name="theActividadesDocEvaCabs" table="THE_ACTIVIDADES_DOC_EVA_CAB" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="MO_ID" precision="22" scale="0" not-null="true">
+                    <comment>Modalidad de la oferta</comment>
+                </column>
+            </key>
+            <one-to-many class="ec.edu.utpl.svied.model.TheActividadesDocEvaCab" />
+        </set>
+        <set name="theActividadesDocEvaDets" table="THE_ACTIVIDADES_DOC_EVA_DET" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="MO_ID" precision="22" scale="0" not-null="true">
+                    <comment>Modalidad de la oferta</comment>
+                </column>
+            </key>
+            <one-to-many class="ec.edu.utpl.svied.model.TheActividadesDocEvaDet" />
+        </set>
+        <set name="theActividadesEvaAvances" table="THE_ACTIVIDADES_EVA_AVANCE" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="MO_ID" precision="22" scale="0" not-null="true">
+                    <comment>Identificador principal modalidad de la oferta</comment>
+                </column>
+            </key>
+            <one-to-many class="ec.edu.utpl.svied.model.TheActividadesEvaAvance" />
+        </set>
+    </class>
+</hibernate-mapping>

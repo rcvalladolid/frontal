@@ -1,0 +1,74 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 01/09/2017 12:34:09 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="ec.edu.utpl.svied.model.TdiPeriodoDetalle" table="TDI_PERIODO_DETALLE" schema="ESQ_SIEC" optimistic-lock="version">
+        <id name="ptId" type="big_decimal">
+            <column name="PT_ID" precision="22" scale="0" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="tdiModalidad" class="ec.edu.utpl.svied.model.TdiModalidad" fetch="select">
+            <column name="MO_ID" precision="22" scale="0" />
+        </many-to-one>
+        <many-to-one name="tdiNivelAcademico" class="ec.edu.utpl.svied.model.TdiNivelAcademico" fetch="select">
+            <column name="NA_ID" precision="22" scale="0" />
+        </many-to-one>
+        <many-to-one name="tdiPeriodo" class="ec.edu.utpl.svied.model.TdiPeriodo" fetch="select">
+            <column name="PE_ID" precision="22" scale="0" />
+        </many-to-one>
+        <many-to-one name="tdsUsuario" class="ec.edu.utpl.svied.model.TdsUsuario" fetch="select">
+            <column name="US_ID" precision="22" scale="0">
+                <comment>Identificador de usuario que ingresa la informaci&#243;n</comment>
+            </column>
+        </many-to-one>
+        <property name="ptFrecuencia" type="string">
+            <column name="PT_FRECUENCIA" length="5">
+                <comment>tipo de frecuencia: DI(Diaria), SM (semanal), ME (mensual), BM(bimestral), PE (periodo)</comment>
+            </column>
+        </property>
+        <property name="ptNumeracion" type="big_decimal">
+            <column name="PT_NUMERACION" precision="22" scale="0" />
+        </property>
+        <property name="ptFechaInicio" type="date">
+            <column name="PT_FECHA_INICIO" length="7" />
+        </property>
+        <property name="ptFechaFin" type="date">
+            <column name="PT_FECHA_FIN" length="7" />
+        </property>
+        <property name="ptFechaCreacion" type="date">
+            <column name="PT_FECHA_CREACION" length="7" />
+        </property>
+        <property name="ptFechaActualizacion" type="date">
+            <column name="PT_FECHA_ACTUALIZACION" length="7">
+                <comment>Fecha de actualizaci&#243;n de los datos del registro</comment>
+            </column>
+        </property>
+        <property name="ptObservacion" type="string">
+            <column name="PT_OBSERVACION" length="150" />
+        </property>
+        <set name="tdiParametrosIndicadors" table="TDI_PARAMETROS_INDICADOR" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="PT_ID" precision="22" scale="0">
+                    <comment>Identificador de la tabla periodo detalle</comment>
+                </column>
+            </key>
+            <one-to-many class="ec.edu.utpl.svied.model.TdiParametrosIndicador" />
+        </set>
+        <set name="theActividadesDocEvaCabs" table="THE_ACTIVIDADES_DOC_EVA_CAB" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="PT_ID_ENROLAMIENTO" precision="22" scale="0">
+                    <comment>Semana en que fue enrolado el docente en el curso en el sistema EVA Creado por: Katty Landacay Fecha creacion: 06/07/2017 Objetivo: Proceso de
+                    seguimiento actividades con reglas en base a las fechas de enrolamiento</comment>
+                </column>
+            </key>
+            <one-to-many class="ec.edu.utpl.svied.model.TheActividadesDocEvaCab" />
+        </set>
+        <set name="theActividadesEvaAvances" table="THE_ACTIVIDADES_EVA_AVANCE" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="PT_ID" precision="22" scale="0" />
+            </key>
+            <one-to-many class="ec.edu.utpl.svied.model.TheActividadesEvaAvance" />
+        </set>
+    </class>
+</hibernate-mapping>

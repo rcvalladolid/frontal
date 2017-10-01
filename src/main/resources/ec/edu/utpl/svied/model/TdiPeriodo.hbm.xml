@@ -1,0 +1,279 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 01/09/2017 12:34:09 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="ec.edu.utpl.svied.model.TdiPeriodo" table="TDI_PERIODO" schema="ESQ_SIEC" optimistic-lock="version">
+        <comment>Almacena los periodos academicos</comment>
+        <id name="peId" type="big_decimal">
+            <column name="PE_ID" precision="22" scale="0" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="tdiPeriodo" class="ec.edu.utpl.svied.model.TdiPeriodo" fetch="select">
+            <column name="PE_PERTENECE_A_PERIODO_PRE" precision="22" scale="0" />
+        </many-to-one>
+        <many-to-one name="tdsUsuario" class="ec.edu.utpl.svied.model.TdsUsuario" fetch="select">
+            <column name="US_ID" precision="22" scale="0">
+                <comment>Identificador principal Usuario</comment>
+            </column>
+        </many-to-one>
+        <property name="peNombre" type="string">
+            <column name="PE_NOMBRE" length="50" not-null="true">
+                <comment>Nombre del Periodo</comment>
+            </column>
+        </property>
+        <property name="peEquIdNsga" type="big_decimal">
+            <column name="PE_EQU_ID_NSGA" precision="22" scale="0">
+                <comment>Indica la equivalencia del periodo en el NSGA</comment>
+            </column>
+        </property>
+        <property name="peEquNombreNsga" type="string">
+            <column name="PE_EQU_NOMBRE_NSGA" length="100">
+                <comment>Indica la equivalencia del periodo en el NSGA</comment>
+            </column>
+        </property>
+        <property name="peEquIdSga" type="big_decimal">
+            <column name="PE_EQU_ID_SGA" precision="22" scale="0">
+                <comment>Indica el ID de equivalencia del periodo en el SGA</comment>
+            </column>
+        </property>
+        <property name="peEquNombreSga" type="string">
+            <column name="PE_EQU_NOMBRE_SGA" length="100">
+                <comment>Indica el ID de equivalencia del periodo en el SGA</comment>
+            </column>
+        </property>
+        <property name="peEquIdPdo" type="big_decimal">
+            <column name="PE_EQU_ID_PDO" precision="22" scale="0">
+                <comment>Equivalencia ID Recursos Humanos</comment>
+            </column>
+        </property>
+        <property name="peEquNombrePdo" type="string">
+            <column name="PE_EQU_NOMBRE_PDO" length="100">
+                <comment>Equivalencia NOMBRE Recursos Humanos</comment>
+            </column>
+        </property>
+        <property name="peEquIdSica" type="big_decimal">
+            <column name="PE_EQU_ID_SICA" precision="22" scale="0">
+                <comment>Equivalencia ID SICA</comment>
+            </column>
+        </property>
+        <property name="peEquNombreSica" type="string">
+            <column name="PE_EQU_NOMBRE_SICA" length="100">
+                <comment>Equivalencia NOMBRE SICA</comment>
+            </column>
+        </property>
+        <property name="peEquIdEva" type="big_decimal">
+            <column name="PE_EQU_ID_EVA" precision="22" scale="0">
+                <comment>Equivalencia ID EVA</comment>
+            </column>
+        </property>
+        <property name="peEquNombreEva" type="string">
+            <column name="PE_EQU_NOMBRE_EVA" length="100">
+                <comment>Equivalencia NOMBRE EVA</comment>
+            </column>
+        </property>
+        <property name="peVigente" type="string">
+            <column name="PE_VIGENTE" length="2" not-null="true">
+                <comment>Indica si el periodo esta vigente o no. S:Si, N:No. Por defecto S:Si</comment>
+            </column>
+        </property>
+        <property name="peFechaInicioVig" type="date">
+            <column name="PE_FECHA_INICIO_VIG" length="7" not-null="true">
+                <comment>Fecha Inicio vigencia NSGA</comment>
+            </column>
+        </property>
+        <property name="peFechaFinVig" type="date">
+            <column name="PE_FECHA_FIN_VIG" length="7">
+                <comment>Fecha fin vigencia NSGA</comment>
+            </column>
+        </property>
+        <property name="peAnio" type="big_decimal">
+            <column name="PE_ANIO" precision="22" scale="0" not-null="true">
+                <comment>Indica el Anio del Periodo</comment>
+            </column>
+        </property>
+        <property name="peFechaIniVigSiec" type="date">
+            <column name="PE_FECHA_INI_VIG_SIEC" length="7" not-null="true">
+                <comment>Fecha Inicio vigencia SIEC</comment>
+            </column>
+        </property>
+        <property name="peFechaFinVigSiec" type="date">
+            <column name="PE_FECHA_FIN_VIG_SIEC" length="7" not-null="true">
+                <comment>Fecha Fin vigencia SIEC</comment>
+            </column>
+        </property>
+        <property name="peCodigoSiec" type="string">
+            <column name="PE_CODIGO_SIEC" length="30" not-null="true">
+                <comment>Indica el codigo del periodo en SIEC</comment>
+            </column>
+        </property>
+        <property name="peValidado" type="string">
+            <column name="PE_VALIDADO" length="1">
+                <comment>Indica si el registro esta validado o no por SIEC</comment>
+            </column>
+        </property>
+        <property name="peEquIdSgaOtro" type="big_decimal">
+            <column name="PE_EQU_ID_SGA_OTRO" precision="22" scale="0">
+                <comment>Indica el ID de equivalencia del periodo en el SGA (Caso especial dado que en SGA existe un periodo duplicado)</comment>
+            </column>
+        </property>
+        <property name="peMad" type="string">
+            <column name="PE_MAD" length="8" />
+        </property>
+        <property name="peActivoSiec" type="string">
+            <column name="PE_ACTIVO_SIEC" length="1">
+                <comment>Indica si el periodo esta activo o no en el SIEC. S:Si, N:No, USADO PARA QUE SE PRESENTE EN LA FUNCIONALIDAD DE REPORTES DEL DISTRIBUTIVO DE LA APP DEL
+                APEX</comment>
+            </column>
+        </property>
+        <property name="peRetencionInicial" type="big_decimal">
+            <column name="PE_RETENCION_INICIAL" precision="22" scale="0" />
+        </property>
+        <property name="peGuidNsga" type="string">
+            <column name="PE_GUID_NSGA" length="100">
+                <comment>GUID De la tabla Periodos del sistema NSGA</comment>
+            </column>
+        </property>
+        <property name="peOrdenPreg" type="big_decimal">
+            <column name="PE_ORDEN_PREG" precision="22" scale="0">
+                <comment>Indica el orden de secuencia de los periodos de pregrado</comment>
+            </column>
+        </property>
+        <property name="peOrdenPosgrado" type="big_decimal">
+            <column name="PE_ORDEN_POSGRADO" precision="22" scale="0">
+                <comment>Indica el orden de secuencia de los periodos de posgrado</comment>
+            </column>
+        </property>
+        <property name="peOrdenPeriodo" type="big_decimal">
+            <column name="PE_ORDEN_PERIODO" precision="22" scale="0">
+                <comment>Orden del periodo academico</comment>
+            </column>
+        </property>
+        <property name="pePerteneceAPeriodoPos" type="big_decimal">
+            <column name="PE_PERTENECE_A_PERIODO_POS" precision="22" scale="0" />
+        </property>
+        <property name="peEjecutaBatch" type="string">
+            <column name="PE_EJECUTA_BATCH" length="1" />
+        </property>
+        <property name="peIdOficial" type="big_decimal">
+            <column name="PE_ID_OFICIAL" precision="22" scale="0">
+                <comment>Indica el identificador del per&#237;odo oficial al que pertenece el registro 1.- PARA PERIODOS EXTRAORDINARIOS.- Se debe colocar como periodo oficial al
+                periodo oficial siguiente. Ejemplo: Si el periodo estraordinario es PE1 2015 el periodo oficial es Abri-Agosto2015</comment>
+            </column>
+        </property>
+        <property name="pePeriodosContiene" type="string">
+            <column name="PE_PERIODOS_CONTIENE" length="25">
+                <comment>Indica los periodos que contiene el periodo oficial: ingresar valores separdos por coma(,) sin espacios, de menor a mayor; para poder comparar valores en
+                los querys</comment>
+            </column>
+        </property>
+        <property name="peEsPeriodoExtraordinario" type="string">
+            <column name="PE_ES_PERIODO_EXTRAORDINARIO" length="1">
+                <comment>Indica si el periodo es un periodo extraordinario es decir no oficial</comment>
+            </column>
+        </property>
+        <property name="peActivoCargaExcel" type="string">
+            <column name="PE_ACTIVO_CARGA_EXCEL" length="1">
+                <comment>Indica si el periodo est&#225; activo para la carga de archivos excel</comment>
+            </column>
+        </property>
+        <property name="peSoloProcesosInternos" type="string">
+            <column name="PE_SOLO_PROCESOS_INTERNOS" length="1" not-null="true">
+                <comment>Indica si el periodo se ha creado solo para procesos internos de UGDA</comment>
+            </column>
+        </property>
+        <property name="peEsPeriodoOficial" type="string">
+            <column name="PE_ES_PERIODO_OFICIAL" length="1">
+                <comment>Indica si el periodo es oficial o no</comment>
+            </column>
+        </property>
+        <property name="peEficienciaTerminal" type="string">
+            <column name="PE_EFICIENCIA_TERMINAL" length="1">
+                <comment>Periodo utilizado para eficiencia terminal</comment>
+            </column>
+        </property>
+        <property name="peActivoAdmDisSiec" type="string">
+            <column name="PE_ACTIVO_ADM_DIS_SIEC" length="1">
+                <comment>Indica si el periodo esta activo en la administracion del SIEC, PARA QUE SE PRESENTE EL PERIODO EN LA APP DEL APEX DE ADMINISTRACI&#211;N DEL
+                DISTRIBUTIVO</comment>
+            </column>
+        </property>
+        <property name="peValidacionDistributivo" type="big_decimal">
+            <column name="PE_VALIDACION_DISTRIBUTIVO" precision="22" scale="0">
+                <comment>Creado por: Silvana Vire Fecha creacion: 13/12/2016 Objetivo: Indica el porcentaje de validaci&#243;n del distributivo correspondiente al periodo
+                acad&#233;mico ofertado.</comment>
+            </column>
+        </property>
+        <property name="peNombrePeriodoOficial" type="string">
+            <column name="PE_NOMBRE_PERIODO_OFICIAL" length="120">
+                <comment>Creado por: Silvana Vire Fecha creacion: 23/03/2017 Objetivo: Nombre del id del periodo oficial, se utiliza para generar reportes usando el nombre del
+                periodo oficial</comment>
+            </column>
+        </property>
+        <property name="pePeriodoOrdinario" type="string">
+            <column name="PE_PERIODO_ORDINARIO" length="1">
+                <comment>Indica si el periodo es ordinario</comment>
+            </column>
+        </property>
+        <set name="tdiRangosSemaforos" table="TDI_RANGOS_SEMAFORO" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="PE_ID_OFICIAL" precision="22" scale="0" not-null="true">
+                    <comment>Identificador principal periodo</comment>
+                </column>
+            </key>
+            <one-to-many class="ec.edu.utpl.svied.model.TdiRangosSemaforo" />
+        </set>
+        <set name="theActividadesDocEvaDets" table="THE_ACTIVIDADES_DOC_EVA_DET" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="PE_ID" precision="22" scale="0" not-null="true">
+                    <comment>Identificador principal periodo academico</comment>
+                </column>
+            </key>
+            <one-to-many class="ec.edu.utpl.svied.model.TheActividadesDocEvaDet" />
+        </set>
+        <set name="theActividadesDocEvaCabs" table="THE_ACTIVIDADES_DOC_EVA_CAB" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="PE_ID" precision="22" scale="0" not-null="true">
+                    <comment>Identificador principal periodo academico</comment>
+                </column>
+            </key>
+            <one-to-many class="ec.edu.utpl.svied.model.TheActividadesDocEvaCab" />
+        </set>
+        <set name="tdiPeriodoDetalles" table="TDI_PERIODO_DETALLE" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="PE_ID" precision="22" scale="0" />
+            </key>
+            <one-to-many class="ec.edu.utpl.svied.model.TdiPeriodoDetalle" />
+        </set>
+        <set name="tevaMicrovideoses" table="TEVA_MICROVIDEOS" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="PE_ID" precision="22" scale="0" not-null="true">
+                    <comment>Identificador principal periodo academico</comment>
+                </column>
+            </key>
+            <one-to-many class="ec.edu.utpl.svied.model.TevaMicrovideos" />
+        </set>
+        <set name="theActividadesEvaAvances" table="THE_ACTIVIDADES_EVA_AVANCE" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="PE_ID" precision="22" scale="0" not-null="true">
+                    <comment>Identificador principal periodo acad&#233;mico</comment>
+                </column>
+            </key>
+            <one-to-many class="ec.edu.utpl.svied.model.TheActividadesEvaAvance" />
+        </set>
+        <set name="tdiOfertaNsgas" table="TDI_OFERTA_NSGA" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="PE_ID" precision="22" scale="0" not-null="true">
+                    <comment>Identificador principal del periodo acad&#233;mico</comment>
+                </column>
+            </key>
+            <one-to-many class="ec.edu.utpl.svied.model.TdiOfertaNsga" />
+        </set>
+        <set name="tdiPeriodos" table="TDI_PERIODO" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="PE_PERTENECE_A_PERIODO_PRE" precision="22" scale="0" />
+            </key>
+            <one-to-many class="ec.edu.utpl.svied.model.TdiPeriodo" />
+        </set>
+    </class>
+</hibernate-mapping>

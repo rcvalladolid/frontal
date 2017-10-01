@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 01/09/2017 12:34:09 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="ec.edu.utpl.svied.model.TdsRolUsuarioUgda" table="TDS_ROL_USUARIO_UGDA" schema="ESQ_SIEC" optimistic-lock="version">
+        <comment>Pemirte almacenar los rol con los usuarios que los poseen</comment>
+        <id name="ruuId" type="big_decimal">
+            <column name="RUU_ID" precision="22" scale="0" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="tdsRol" class="ec.edu.utpl.svied.model.TdsRol" fetch="select">
+            <column name="RO_ID" precision="22" scale="0" not-null="true">
+                <comment>Identificador principal del rol</comment>
+            </column>
+        </many-to-one>
+        <many-to-one name="tdsUsuarioUgda" class="ec.edu.utpl.svied.model.TdsUsuarioUgda" fetch="select">
+            <column name="US_ID" precision="22" scale="0" not-null="true">
+                <comment>Identificador principal de usuario</comment>
+            </column>
+        </many-to-one>
+        <property name="ruuFechaInicioVig" type="date">
+            <column name="RUU_FECHA_INICIO_VIG" length="7" not-null="true">
+                <comment>Estado inicio vigencia del rol usuario</comment>
+            </column>
+        </property>
+        <property name="ruuVigente" type="string">
+            <column name="RUU_VIGENTE" length="1" not-null="true">
+                <comment>Estado rol usuario</comment>
+            </column>
+        </property>
+    </class>
+</hibernate-mapping>

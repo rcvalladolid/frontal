@@ -1,0 +1,343 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 01/09/2017 12:34:09 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="ec.edu.utpl.svied.model.TdiDocente" table="TDI_DOCENTE" schema="ESQ_SIEC" optimistic-lock="version">
+        <comment>Almacena la informaci&#243;n general del Docente. Esta informaci&#243;n no cambia por periodos. Adem&#225;s contiene las equivalencias de los Sistemas Externos
+        con los que se integrar&#225; la informaci&#243;n</comment>
+        <id name="doId" type="big_decimal">
+            <column name="DO_ID" precision="22" scale="0" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="tdiCentroUniversitario" class="ec.edu.utpl.svied.model.TdiCentroUniversitario" fetch="select">
+            <column name="CU_ID" precision="22" scale="0">
+                <comment>Identificador principal del centro universitario</comment>
+            </column>
+        </many-to-one>
+        <many-to-one name="tdiGlosarioByDoTipoIdentificacion" class="ec.edu.utpl.svied.model.TdiGlosario" fetch="select">
+            <column name="DO_TIPO_IDENTIFICACION" precision="22" scale="0" not-null="true">
+                <comment>Indica el Tipo de Identificaci&#243;n del Docente: RUC, CEDULA, PASAPORTE. Hace referencia al catalogo TIPO_IDENTF de la tabla TDI_GLOSARIO</comment>
+            </column>
+        </many-to-one>
+        <many-to-one name="tdiGlosarioByDoNacionalidad" class="ec.edu.utpl.svied.model.TdiGlosario" fetch="select">
+            <column name="DO_NACIONALIDAD" precision="22" scale="0">
+                <comment>Indica la Nacionalidad del Docente. Hace referencia al catalogo NACIONALIDAD de la tabla glosario</comment>
+            </column>
+        </many-to-one>
+        <many-to-one name="tdsUsuario" class="ec.edu.utpl.svied.model.TdsUsuario" fetch="select">
+            <column name="DO_VALIDADOR_RRHH" precision="22" scale="0" />
+        </many-to-one>
+        <property name="doIdentificacion" type="string">
+            <column name="DO_IDENTIFICACION" length="13" not-null="true">
+                <comment>Identificacion del docente, se toma la identificaci&#243;n asignada en RRHH ya que utilizan los numeros de identificaci&#243;n seg&#250;n el documento que
+                presenta la persona (cedula, pasaporte)</comment>
+            </column>
+        </property>
+        <property name="doApellidoPaterno" type="string">
+            <column name="DO_APELLIDO_PATERNO" length="100" not-null="true">
+                <comment>Indica el Apellido Paterno del Docente</comment>
+            </column>
+        </property>
+        <property name="doApellidoMaterno" type="string">
+            <column name="DO_APELLIDO_MATERNO" length="100">
+                <comment>Apellido Materno</comment>
+            </column>
+        </property>
+        <property name="doPrimerNombre" type="string">
+            <column name="DO_PRIMER_NOMBRE" length="100" not-null="true">
+                <comment>Indica el primer Nombre del Docente</comment>
+            </column>
+        </property>
+        <property name="doSegundoNombre" type="string">
+            <column name="DO_SEGUNDO_NOMBRE" length="100">
+                <comment>Indica el Segundo Nombre del Docente</comment>
+            </column>
+        </property>
+        <property name="doFechaNacimiento" type="date">
+            <column name="DO_FECHA_NACIMIENTO" length="7">
+                <comment>Indica la Fecha Nacimiento del Docente.</comment>
+            </column>
+        </property>
+        <property name="doEquIdNsga" type="big_decimal">
+            <column name="DO_EQU_ID_NSGA" precision="22" scale="0" unique="true">
+                <comment>Equivalencia ID NSGA</comment>
+            </column>
+        </property>
+        <property name="doEquIdSga" type="big_decimal">
+            <column name="DO_EQU_ID_SGA" precision="22" scale="0" unique="true">
+                <comment>Equivalencia ID SGA</comment>
+            </column>
+        </property>
+        <property name="doEquIdSica" type="big_decimal">
+            <column name="DO_EQU_ID_SICA" precision="22" scale="0">
+                <comment>Equivalencia ID SICA</comment>
+            </column>
+        </property>
+        <property name="doEquIdEva" type="big_decimal">
+            <column name="DO_EQU_ID_EVA" precision="22" scale="0">
+                <comment>Equivalencia ID EVA</comment>
+            </column>
+        </property>
+        <property name="doGenero" type="string">
+            <column name="DO_GENERO" length="2" not-null="true">
+                <comment>Indica el genero del Docente. F: Femenino, M:Masculino, O:Otro</comment>
+            </column>
+        </property>
+        <property name="doFechaCreacion" type="date">
+            <column name="DO_FECHA_CREACION" length="7" not-null="true">
+                <comment>Indica la Fecha de creacion del docente</comment>
+            </column>
+        </property>
+        <property name="doFechaActualizacion" type="date">
+            <column name="DO_FECHA_ACTUALIZACION" length="7">
+                <comment>Indica la ultima Fecha de actualizacion de informaci&#243;n del Docente</comment>
+            </column>
+        </property>
+        <property name="doEstado" type="string">
+            <column name="DO_ESTADO" length="1" not-null="true">
+                <comment>Indica si el docente esta A:ACTIVO, R:RETIRADO, L:LICENCIA, E:Eventual, S:SIN ESTADO (Proviene el registro en blanco, o N:error) Para asignar el estado
+                del docente se usa el estado asignado desde N&#243;mina TDI_DOCENTE_NOMINA (estado mandatorio)</comment>
+            </column>
+        </property>
+        <property name="doCorreoPri" type="string">
+            <column name="DO_CORREO_PRI" length="120">
+                <comment>Correo Principal del Docente</comment>
+            </column>
+        </property>
+        <property name="doCorreoSec" type="string">
+            <column name="DO_CORREO_SEC" length="120">
+                <comment>Correo Secundario del Docente</comment>
+            </column>
+        </property>
+        <property name="doTelefonoDom" type="string">
+            <column name="DO_TELEFONO_DOM" length="30">
+                <comment>Telefono Domicio Docente</comment>
+            </column>
+        </property>
+        <property name="doCelularPri" type="string">
+            <column name="DO_CELULAR_PRI" length="30">
+                <comment>Celular Principal Docente</comment>
+            </column>
+        </property>
+        <property name="doCelularSec" type="string">
+            <column name="DO_CELULAR_SEC" length="30">
+                <comment>Celular Secundario Docente</comment>
+            </column>
+        </property>
+        <property name="doPrometeo" type="string">
+            <column name="DO_PROMETEO" length="1" not-null="true">
+                <comment>Es Prometeo: S:SI, N:No</comment>
+            </column>
+        </property>
+        <property name="doEquIdCittes" type="big_decimal">
+            <column name="DO_EQU_ID_CITTES" precision="22" scale="0">
+                <comment>Equivalencia Id Cittes</comment>
+            </column>
+        </property>
+        <property name="doEquIdNsga2" type="big_decimal">
+            <column name="DO_EQU_ID_NSGA2" precision="22" scale="0">
+                <comment>Permite almacenar aquellos entes que tienen mas de un id ene le NSGA como: 249435</comment>
+            </column>
+        </property>
+        <property name="doIdentificacionRrhh" type="string">
+            <column name="DO_IDENTIFICACION_RRHH" length="15">
+                <comment>Identificacion principal del Docente en RRHH</comment>
+            </column>
+        </property>
+        <property name="doValidadoRrhh" type="string">
+            <column name="DO_VALIDADO_RRHH" length="1">
+                <comment>Indica si la informacion del docente ha sido validado por RRHH</comment>
+            </column>
+        </property>
+        <property name="doExtension" type="string">
+            <column name="DO_EXTENSION" length="20">
+                <comment>EXTENSION DEL DOCENTE</comment>
+            </column>
+        </property>
+        <property name="doTecnicoDocente" type="java.lang.Character">
+            <column name="DO_TECNICO_DOCENTE" length="1">
+                <comment>Es t&#233;cnico docente: S:SI, N:NO</comment>
+            </column>
+        </property>
+        <property name="doFechaIngreso" type="date">
+            <column name="DO_FECHA_INGRESO" length="7">
+                <comment>Fecha de ingreso a la UTPL</comment>
+            </column>
+        </property>
+        <property name="doFechaSalida" type="date">
+            <column name="DO_FECHA_SALIDA" length="7">
+                <comment>Fecha de salida de la UTPL</comment>
+            </column>
+        </property>
+        <property name="usuarioApexCrea" type="string">
+            <column name="USUARIO_APEX_CREA" length="50" />
+        </property>
+        <property name="usuarioApexActualiza" type="string">
+            <column name="USUARIO_APEX_ACTUALIZA" length="50" />
+        </property>
+        <property name="doCorreoPersonal" type="string">
+            <column name="DO_CORREO_PERSONAL" length="80" />
+        </property>
+        <property name="doEsAdministrativo" type="string">
+            <column name="DO_ES_ADMINISTRATIVO" length="1">
+                <comment>Indica si el docente es administrativo o no.</comment>
+            </column>
+        </property>
+        <property name="doIdTipoSangre" type="big_decimal">
+            <column name="DO_ID_TIPO_SANGRE" precision="22" scale="0">
+                <comment>TIPO DE SANGRE DEL DOCENTE EN EL CATALOGO TDI_GLOSARIO</comment>
+            </column>
+        </property>
+        <property name="doEquIdRrHh" type="big_decimal">
+            <column name="DO_EQU_ID_RR_HH" precision="22" scale="0">
+                <comment>Identificador de filemaker</comment>
+            </column>
+        </property>
+        <property name="doIdentificacionNomina" type="string">
+            <column name="DO_IDENTIFICACION_NOMINA" length="25">
+                <comment>Identificaci&#243;n de n&#243;mina</comment>
+            </column>
+        </property>
+        <property name="doRepetidoNsga" type="string">
+            <column name="DO_REPETIDO_NSGA" length="1">
+                <comment>Indica si el docente esta repetido S:Si, N:No</comment>
+            </column>
+        </property>
+        <property name="doObservacionesRepetido" type="string">
+            <column name="DO_OBSERVACIONES_REPETIDO" length="100" />
+        </property>
+        <property name="doEquiIdNomina" type="big_decimal">
+            <column name="DO_EQUI_ID_NOMINA" precision="22" scale="0">
+                <comment>Identificador de n&#243;mina</comment>
+            </column>
+        </property>
+        <property name="doEquiIdRegistro" type="big_decimal">
+            <column name="DO_EQUI_ID_REGISTRO" precision="22" scale="0">
+                <comment>Identificador del sistema de picadas: registro de entrada y salida</comment>
+            </column>
+        </property>
+        <property name="doCantonNacimiento" type="big_decimal">
+            <column name="DO_CANTON_NACIMIENTO" precision="22" scale="0">
+                <comment>Identificador del canton de nacimiento, hace referencia al catalogo "CANTON"</comment>
+            </column>
+        </property>
+        <property name="doProvinciaNacimiento" type="big_decimal">
+            <column name="DO_PROVINCIA_NACIMIENTO" precision="22" scale="0">
+                <comment>Identificador de la provincia de nacimiento, hace referencia al cat&#225;logo "PROVINCIA"</comment>
+            </column>
+        </property>
+        <property name="doTipoDiscapacidad" type="big_decimal">
+            <column name="DO_TIPO_DISCAPACIDAD" precision="22" scale="0">
+                <comment>Identificador del tipo de discapacidad, hace referencia al cat&#225;logo TDI_GLOSARIO - "TIPO_DISCAPACIDAD"</comment>
+            </column>
+        </property>
+        <property name="doPorcentajeDiscapacidad" type="big_decimal">
+            <column name="DO_PORCENTAJE_DISCAPACIDAD" precision="22" scale="0" />
+        </property>
+        <property name="doNumeroCarnetConadis" type="string">
+            <column name="DO_NUMERO_CARNET_CONADIS" length="25" />
+        </property>
+        <property name="doObservacion" type="string">
+            <column name="DO_OBSERVACION" length="250">
+                <comment>Observacion, &#243; comentario sobre el registro</comment>
+            </column>
+        </property>
+        <property name="doIdentificacionNsga" type="string">
+            <column name="DO_IDENTIFICACION_NSGA" length="15">
+                <comment>Identificacion del docente en el NSGA</comment>
+            </column>
+        </property>
+        <property name="doFoto" type="blob">
+            <column name="DO_FOTO" />
+        </property>
+        <property name="doFotoMimetype" type="string">
+            <column name="DO_FOTO_MIMETYPE" />
+        </property>
+        <property name="doFotoFilename" type="string">
+            <column name="DO_FOTO_FILENAME" />
+        </property>
+        <property name="doFotoLastUpdate" type="date">
+            <column name="DO_FOTO_LAST_UPDATE" length="7" />
+        </property>
+        <property name="doEquIdNsga3" type="big_decimal">
+            <column name="DO_EQU_ID_NSGA3" precision="22" scale="0" />
+        </property>
+        <property name="doFechaInicioAdenda" type="date">
+            <column name="DO_FECHA_INICIO_ADENDA" length="7">
+                <comment>Fecha de inicio de adenda, en caso de poseer el docente adenda. Adenda es la actualizaci&#243;n al contrato laboral</comment>
+            </column>
+        </property>
+        <property name="doFechaFinAdenda" type="date">
+            <column name="DO_FECHA_FIN_ADENDA" length="7">
+                <comment>Fecha finalizaci&#243;n de adenda</comment>
+            </column>
+        </property>
+        <property name="doFechaValidacionRrhh" type="date">
+            <column name="DO_FECHA_VALIDACION_RRHH" length="7" />
+        </property>
+        <property name="doEstadoCivil" type="big_decimal">
+            <column name="DO_ESTADO_CIVIL" precision="22" scale="0">
+                <comment>Hace referencia al grupo del glosario ESTADO_CIVIL</comment>
+            </column>
+        </property>
+        <property name="doContratoIndefinido" type="java.lang.Character">
+            <column name="DO_CONTRATO_INDEFINIDO" length="1">
+                <comment>Creado por: Silvana Vire Fecha creacion: 12/12/2016 Objetivo.- Indica si el docente tiene contrato indefinido 'S' = S; 'N' = NO</comment>
+            </column>
+        </property>
+        <property name="doEstadoNomina" type="java.lang.Character">
+            <column name="DO_ESTADO_NOMINA" length="1">
+                <comment>Creado por: Silvana Vire Fecha creacion: 12/12/2016 Objetivo.- Indica si el docente tiene contrato indefinido 'S' = S; 'N' = NO</comment>
+            </column>
+        </property>
+        <property name="doEstadoRrhh" type="java.lang.Character">
+            <column name="DO_ESTADO_RRHH" length="1" />
+        </property>
+        <property name="doCodigoUtpl" type="string">
+            <column name="DO_CODIGO_UTPL" length="100">
+                <comment>Creado por: Silvana Vire Fecha creacion: 05/04/2017 Objetivo: Indica el codigo utpl para el docente</comment>
+            </column>
+        </property>
+        <set name="theActividadesDocEvaDets" table="THE_ACTIVIDADES_DOC_EVA_DET" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="DO_ID" precision="22" scale="0" not-null="true">
+                    <comment>Identificador principal docente</comment>
+                </column>
+            </key>
+            <one-to-many class="ec.edu.utpl.svied.model.TheActividadesDocEvaDet" />
+        </set>
+        <set name="tdiOfertaDocentesNsgas" table="TDI_OFERTA_DOCENTES_NSGA" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="DO_ID" precision="22" scale="0" not-null="true">
+                    <comment>Identificador principal del docente</comment>
+                </column>
+            </key>
+            <one-to-many class="ec.edu.utpl.svied.model.TdiOfertaDocentesNsga" />
+        </set>
+        <set name="theActividadesEvaAvances" table="THE_ACTIVIDADES_EVA_AVANCE" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="DO_ID" precision="22" scale="0" not-null="true">
+                    <comment>Identificador principal docente</comment>
+                </column>
+            </key>
+            <one-to-many class="ec.edu.utpl.svied.model.TheActividadesEvaAvance" />
+        </set>
+        <set name="theActividadesDocEvaCabs" table="THE_ACTIVIDADES_DOC_EVA_CAB" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="DO_ID" precision="22" scale="0" not-null="true">
+                    <comment>Identificador principal docente</comment>
+                </column>
+            </key>
+            <one-to-many class="ec.edu.utpl.svied.model.TheActividadesDocEvaCab" />
+        </set>
+        <set name="tevaMicrovideoses" table="TEVA_MICROVIDEOS" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="DO_ID" precision="22" scale="0" not-null="true">
+                    <comment>Identificador principal docente</comment>
+                </column>
+            </key>
+            <one-to-many class="ec.edu.utpl.svied.model.TevaMicrovideos" />
+        </set>
+    </class>
+</hibernate-mapping>

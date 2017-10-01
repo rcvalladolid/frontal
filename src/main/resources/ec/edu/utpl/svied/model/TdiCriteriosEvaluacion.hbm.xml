@@ -1,0 +1,68 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 01/09/2017 12:34:09 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="ec.edu.utpl.svied.model.TdiCriteriosEvaluacion" table="TDI_CRITERIOS_EVALUACION" schema="ESQ_SIEC" optimistic-lock="version">
+        <comment>Permite almacenar los criterios de evaluaci&#243;n obtenidos del plan de mejora de la UTPL</comment>
+        <id name="cvId" type="big_decimal">
+            <column name="CV_ID" precision="22" scale="0" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="tdiGlosario" class="ec.edu.utpl.svied.model.TdiGlosario" fetch="select">
+            <column name="CV_PERTENECE_A" precision="22" scale="0" not-null="true">
+                <comment>Indica si el criterio pertenece al: PLAN DE MEJORA, o a INDICADORES GERENTES Y DIRECTORES DE AREA. Hace referencia al catalogo CRIT_PERTENECE</comment>
+            </column>
+        </many-to-one>
+        <property name="cvCodigo" type="string">
+            <column name="CV_CODIGO" length="50" not-null="true">
+                <comment>Indica el c&#243;digo del criterio</comment>
+            </column>
+        </property>
+        <property name="cvNombre" type="string">
+            <column name="CV_NOMBRE" length="500" not-null="true">
+                <comment>Indica el nombre del criterio de evaluaci&#243;n</comment>
+            </column>
+        </property>
+        <property name="cvFechaInicioVigencia" type="date">
+            <column name="CV_FECHA_INICIO_VIGENCIA" length="7" not-null="true">
+                <comment>Indica la fecha desde cuando est&#225; en vigencia el criterio de evaluaci&#243;n</comment>
+            </column>
+        </property>
+        <property name="cvFechaFinVigencia" type="date">
+            <column name="CV_FECHA_FIN_VIGENCIA" length="7">
+                <comment>Indica la fecha hasta cuando est&#225; en vigencia el criterio de evaluaci&#243;n</comment>
+            </column>
+        </property>
+        <property name="cvVigente" type="string">
+            <column name="CV_VIGENTE" length="1" not-null="true">
+                <comment>Indica si el criterio de evaluaci&#243;n est&#225; vigente o no. S:Si, N:No</comment>
+            </column>
+        </property>
+        <property name="usuarioApexCrea" type="string">
+            <column name="USUARIO_APEX_CREA" length="50" />
+        </property>
+        <property name="usuarioApexUltAct" type="string">
+            <column name="USUARIO_APEX_ULT_ACT" length="50" />
+        </property>
+        <property name="cvFechaCreacion" type="date">
+            <column name="CV_FECHA_CREACION" length="7" />
+        </property>
+        <property name="cvFechaUltAct" type="date">
+            <column name="CV_FECHA_ULT_ACT" length="7" />
+        </property>
+        <property name="cvNumeracion" type="string">
+            <column name="CV_NUMERACION" length="30">
+                <comment>Indica la numeracion del criterio de evaluacion</comment>
+            </column>
+        </property>
+        <set name="tdiIndicadors" table="TDI_INDICADOR" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="CV_ID" precision="22" scale="0">
+                    <comment>Identificador principal del criterio BORRARLO LUEGO DE TERMINAR LA APP</comment>
+                </column>
+            </key>
+            <one-to-many class="ec.edu.utpl.svied.model.TdiIndicador" />
+        </set>
+    </class>
+</hibernate-mapping>

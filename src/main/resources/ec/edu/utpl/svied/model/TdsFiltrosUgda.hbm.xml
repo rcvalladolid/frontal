@@ -1,0 +1,48 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 01/09/2017 12:34:09 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="ec.edu.utpl.svied.model.TdsFiltrosUgda" table="TDS_FILTROS_UGDA" schema="ESQ_SIEC" optimistic-lock="version">
+        <comment>Pertmite almacenar filtros como periodos, a&#241;os y fechas para las aplicaciones de app docentes y gerentes java</comment>
+        <id name="filId" type="big_decimal">
+            <column name="FIL_ID" precision="22" scale="0" />
+            <generator class="assigned" />
+        </id>
+        <property name="filCodigo" type="big_decimal">
+            <column name="FIL_CODIGO" precision="22" scale="0">
+                <comment>Filtros como periodos, anos y fechas para las apps java</comment>
+            </column>
+        </property>
+        <property name="filModulo" type="string">
+            <column name="FIL_MODULO" length="50" not-null="true">
+                <comment>M&#243;dulo de la app a la que se hace refencia los filtros (FIL_CODIGO)</comment>
+            </column>
+        </property>
+        <property name="filAplicacion" type="string">
+            <column name="FIL_APLICACION" length="100" not-null="true">
+                <comment>Nombre de la aplicaci&#243;n java que hace referencia al m&#243;dulo y al c&#243;digo</comment>
+            </column>
+        </property>
+        <property name="filDescripcion" type="string">
+            <column name="FIL_DESCRIPCION" length="200">
+                <comment>Descipci&#243;n de la aplicaci&#243;n</comment>
+            </column>
+        </property>
+        <property name="filVigencia" type="string">
+            <column name="FIL_VIGENCIA" length="1" not-null="true">
+                <comment>Vigencia del filtro (FIL_CODIGO)</comment>
+            </column>
+        </property>
+        <property name="filFechaInicioVig" type="date">
+            <column name="FIL_FECHA_INICIO_VIG" length="7" not-null="true">
+                <comment>Fecha de inicio de vigencia del filtro</comment>
+            </column>
+        </property>
+        <property name="filFechaFinVig" type="date">
+            <column name="FIL_FECHA_FIN_VIG" length="7">
+                <comment>Fecha fin de vigencia del filtro</comment>
+            </column>
+        </property>
+    </class>
+</hibernate-mapping>

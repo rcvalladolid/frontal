@@ -1,0 +1,74 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 01/09/2017 12:34:09 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="ec.edu.utpl.svied.model.TdsRol" table="TDS_ROL" schema="ESQ_SIEC" optimistic-lock="version">
+        <comment>Permite almacenar los roles que se van a utilizar dentro de la aplicaci&#243;n de presentaci&#243;n de indicadores</comment>
+        <id name="roId" type="big_decimal">
+            <column name="RO_ID" precision="22" scale="0" />
+            <generator class="assigned" />
+        </id>
+        <property name="roNombre" type="string">
+            <column name="RO_NOMBRE" length="50" not-null="true">
+                <comment>Nombre rol</comment>
+            </column>
+        </property>
+        <property name="roFechaInicioVig" type="date">
+            <column name="RO_FECHA_INICIO_VIG" length="7" not-null="true">
+                <comment>Fecha inicio vigencia</comment>
+            </column>
+        </property>
+        <property name="roFechaFinVig" type="date">
+            <column name="RO_FECHA_FIN_VIG" length="7">
+                <comment>Fecha fin vigencia</comment>
+            </column>
+        </property>
+        <property name="roVigente" type="string">
+            <column name="RO_VIGENTE" length="1" not-null="true">
+                <comment>Estado Rol, Indica si es estado esta vigente o no</comment>
+            </column>
+        </property>
+        <property name="roCodigo" type="string">
+            <column name="RO_CODIGO" length="30" unique="true">
+                <comment>Codigo unico por cada rol</comment>
+            </column>
+        </property>
+        <property name="roActivoApex" type="string">
+            <column name="RO_ACTIVO_APEX" length="1" not-null="true">
+                <comment>Indica si a nivel del APEX este rol esta activo</comment>
+            </column>
+        </property>
+        <property name="roFechaCreacion" type="date">
+            <column name="RO_FECHA_CREACION" length="7" not-null="true">
+                <comment>Feha de creacion del rol en el SIEC</comment>
+            </column>
+        </property>
+        <property name="roFechaUltActualizacion" type="date">
+            <column name="RO_FECHA_ULT_ACTUALIZACION" length="7" not-null="true">
+                <comment>Feha de la ultima actualizacion del rol en el SIEC</comment>
+            </column>
+        </property>
+        <property name="roDescripcion" type="string">
+            <column name="RO_DESCRIPCION" length="300">
+                <comment>Descripcion general del rol</comment>
+            </column>
+        </property>
+        <set name="tdsRolUsuarioUgdas" table="TDS_ROL_USUARIO_UGDA" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="RO_ID" precision="22" scale="0" not-null="true">
+                    <comment>Identificador principal del rol</comment>
+                </column>
+            </key>
+            <one-to-many class="ec.edu.utpl.svied.model.TdsRolUsuarioUgda" />
+        </set>
+        <set name="tdsRolUsuarios" table="TDS_ROL_USUARIO" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="RO_ID" precision="22" scale="0" not-null="true">
+                    <comment>Identificador principal del rol</comment>
+                </column>
+            </key>
+            <one-to-many class="ec.edu.utpl.svied.model.TdsRolUsuario" />
+        </set>
+    </class>
+</hibernate-mapping>

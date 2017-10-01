@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 01/09/2017 12:34:09 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="ec.edu.utpl.svied.model.TdsRegistroAccesosUgda" table="TDS_REGISTRO_ACCESOS_UGDA" schema="ESQ_SIEC" optimistic-lock="version">
+        <id name="racId" type="big_decimal">
+            <column name="RAC_ID" precision="22" scale="0" />
+            <generator class="assigned" />
+        </id>
+        <property name="usId" type="big_decimal">
+            <column name="US_ID" precision="22" scale="0" not-null="true" />
+        </property>
+        <property name="racModulo" type="string">
+            <column name="RAC_MODULO" length="1000" not-null="true" />
+        </property>
+        <property name="racFechaIngreso" type="string">
+            <column name="RAC_FECHA_INGRESO" length="25" not-null="true" />
+        </property>
+        <property name="racTipoApp" type="string">
+            <column name="RAC_TIPO_APP" length="50" not-null="true" />
+        </property>
+    </class>
+</hibernate-mapping>

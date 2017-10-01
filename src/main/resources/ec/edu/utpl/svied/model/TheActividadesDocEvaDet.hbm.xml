@@ -1,0 +1,243 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 01/09/2017 12:34:09 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="ec.edu.utpl.svied.model.TheActividadesDocEvaDet" table="THE_ACTIVIDADES_DOC_EVA_DET" schema="ESQ_SIEC" optimistic-lock="version">
+        <id name="aedId" type="big_decimal">
+            <column name="AED_ID" precision="22" scale="0" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="tdiComponenteEducativo" class="ec.edu.utpl.svied.model.TdiComponenteEducativo" fetch="select">
+            <column name="CE_ID" precision="22" scale="0" not-null="true">
+                <comment>Identificador principal componente educativo</comment>
+            </column>
+        </many-to-one>
+        <many-to-one name="tdiOfertaNsga" class="ec.edu.utpl.svied.model.TdiOfertaNsga" fetch="select">
+            <column name="ONS_ID" precision="22" scale="0" not-null="true">
+                <comment>Identificador principal oferta nsga SIEC</comment>
+            </column>
+        </many-to-one>
+        <many-to-one name="tdiArea" class="ec.edu.utpl.svied.model.TdiArea" fetch="select">
+            <column name="AR_ID_CE" precision="22" scale="0" not-null="true">
+                <comment>Identificador area del componente</comment>
+            </column>
+        </many-to-one>
+        <many-to-one name="tdiDepartamento" class="ec.edu.utpl.svied.model.TdiDepartamento" fetch="select">
+            <column name="DE_ID_CE" precision="22" scale="0" not-null="true">
+                <comment>Identificador departamento del componente</comment>
+            </column>
+        </many-to-one>
+        <many-to-one name="tdiDocente" class="ec.edu.utpl.svied.model.TdiDocente" fetch="select">
+            <column name="DO_ID" precision="22" scale="0" not-null="true">
+                <comment>Identificador principal docente</comment>
+            </column>
+        </many-to-one>
+        <many-to-one name="tdiIndicador" class="ec.edu.utpl.svied.model.TdiIndicador" fetch="select">
+            <column name="ID_ID" precision="22" scale="0" not-null="true">
+                <comment>Identificador prinicpal indicador</comment>
+            </column>
+        </many-to-one>
+        <many-to-one name="tdiModalidad" class="ec.edu.utpl.svied.model.TdiModalidad" fetch="select">
+            <column name="MO_ID" precision="22" scale="0" not-null="true">
+                <comment>Modalidad de la oferta</comment>
+            </column>
+        </many-to-one>
+        <many-to-one name="tdiNivelAcademico" class="ec.edu.utpl.svied.model.TdiNivelAcademico" fetch="select">
+            <column name="NA_ID" precision="22" scale="0" not-null="true">
+                <comment>Nivel academico de la oferta</comment>
+            </column>
+        </many-to-one>
+        <many-to-one name="tdiPeriodo" class="ec.edu.utpl.svied.model.TdiPeriodo" fetch="select">
+            <column name="PE_ID" precision="22" scale="0" not-null="true">
+                <comment>Identificador principal periodo academico</comment>
+            </column>
+        </many-to-one>
+        <many-to-one name="tdiSeccionDepartamental" class="ec.edu.utpl.svied.model.TdiSeccionDepartamental" fetch="select">
+            <column name="SE_ID_CE" precision="22" scale="0" not-null="true">
+                <comment>Identificador secci&#243;n del componente</comment>
+            </column>
+        </many-to-one>
+        <many-to-one name="tdiGlosario" class="ec.edu.utpl.svied.model.TdiGlosario" fetch="select">
+            <column name="AED_PARALELO_ID" precision="22" scale="0" not-null="true">
+                <comment>Paralelo de la oferta</comment>
+            </column>
+        </many-to-one>
+        <many-to-one name="tevaMicrovideos" class="ec.edu.utpl.svied.model.TevaMicrovideos" fetch="select">
+            <column name="MIV_ID" precision="22" scale="0">
+                <comment>Identificador principal microvideos tabla de stage. Creado por: Katty Landacay Fecha creacion: 24/10/2016 Objetivo.- Enlazar con la tabla de microvideos
+                stage, para poder realizar el merge de extraccion</comment>
+            </column>
+        </many-to-one>
+        <many-to-one name="tdiObservacionPersonalizada" class="ec.edu.utpl.svied.model.TdiObservacionPersonalizada" fetch="select">
+            <column name="AED_OBSERVACIONES_ID" precision="22" scale="0">
+                <comment>Identificador principal nombre de objetivos personalizados</comment>
+            </column>
+        </many-to-one>
+        <many-to-one name="tdiParametrosIndicador" class="ec.edu.utpl.svied.model.TdiParametrosIndicador" fetch="select">
+            <column name="PI_ID" precision="22" scale="0" not-null="true">
+                <comment>Identificador principal Parametros del indicador</comment>
+            </column>
+        </many-to-one>
+        <many-to-one name="theActividadesDocEvaCab" class="ec.edu.utpl.svied.model.TheActividadesDocEvaCab" fetch="select">
+            <column name="AEC_ID" precision="22" scale="0" not-null="true">
+                <comment>Identificador de la tabla de hechos cabecera actividades eva</comment>
+            </column>
+        </many-to-one>
+        <property name="aedNumeracionActividad" type="big_decimal">
+            <column name="AED_NUMERACION_ACTIVIDAD" precision="22" scale="0">
+                <comment>VALIDAR SI EL CAMPO PUEDE ELIMINARSE Indica el numero de la actividad, de forma secuencial por paralelo y docente. Ejemplo: Si el docente tiene dos foros
+                en el paralelo este ccampo indicara cual es el foro 1 y el foro 2 creados, utilizando el id de creacion</comment>
+            </column>
+        </property>
+        <property name="aedFechaActividad" type="date">
+            <column name="AED_FECHA_ACTIVIDAD" length="7">
+                <comment>Fecha que realiza la actividad</comment>
+            </column>
+        </property>
+        <property name="aedCantidad" type="big_decimal">
+            <column name="AED_CANTIDAD" precision="22" scale="0" not-null="true">
+                <comment>Cantidad de anuncios, foros, o una de las actividades realizadas en la fecha indicada</comment>
+            </column>
+        </property>
+        <property name="aedCumplimiento" type="big_decimal">
+            <column name="AED_CUMPLIMIENTO" precision="22" scale="0" not-null="true">
+                <comment>S - SI, N - NO</comment>
+            </column>
+        </property>
+        <property name="aedSeguimiento" type="big_decimal">
+            <column name="AED_SEGUIMIENTO" precision="22" scale="0" not-null="true">
+                <comment>S - SI, N - NO</comment>
+            </column>
+        </property>
+        <property name="aedSobrantes" type="big_decimal">
+            <column name="AED_SOBRANTES" precision="22" scale="0" not-null="true">
+                <comment>Indica que el docente realizo foros, videoconferencias, microvideos u otras actividades que NO ERAN OBLIGATORIAS DE REALIZAR EN ESA SEMANA PERO EL LAS
+                REALIZA. 1:SI, 0:NO. Indica que la activadad no es obligatoria de cumplir, es dcir no tiene un valor minimo que debe cumplir ni un semana especifica, pero el
+                docente la cumplio o realiz&#243;</comment>
+            </column>
+        </property>
+        <property name="aedCalificacion" type="big_decimal">
+            <column name="AED_CALIFICACION" precision="22" scale="0" not-null="true">
+                <comment>Indica si el docente obtuvo de calificaci&#243;n de la actividad realizada en el eva</comment>
+            </column>
+        </property>
+        <property name="aedOfertadaParaPrimerCiclo" type="string">
+            <column name="AED_OFERTADA_PARA_PRIMER_CICLO" length="1">
+                <comment>Indica si la oferta es para primer ciclo BORRAR</comment>
+            </column>
+        </property>
+        <property name="aedOfertadaComoFb" type="string">
+            <column name="AED_OFERTADA_COMO_FB" length="1">
+                <comment>Indica si ha sido ofertada para alguna titulacion como materia de FORMACION BASICA FB BORRAR</comment>
+            </column>
+        </property>
+        <property name="aedOfertadaComoPracticum" type="string">
+            <column name="AED_OFERTADA_COMO_PRACTICUM" length="1">
+                <comment>BORRAR</comment>
+            </column>
+        </property>
+        <property name="aedFechaCreacionSiec" type="date">
+            <column name="AED_FECHA_CREACION_SIEC" length="7" not-null="true" />
+        </property>
+        <property name="aedUsuarioCreaSiec" type="string">
+            <column name="AED_USUARIO_CREA_SIEC" length="100" not-null="true" />
+        </property>
+        <property name="aedUsuarioActualizacionSiec" type="string">
+            <column name="AED_USUARIO_ACTUALIZACION_SIEC" length="100" />
+        </property>
+        <property name="aedFechaActualizacionSiec" type="date">
+            <column name="AED_FECHA_ACTUALIZACION_SIEC" length="7" />
+        </property>
+        <property name="aedNumSmnEva" type="big_decimal">
+            <column name="AED_NUM_SMN_EVA" precision="22" scale="0">
+                <comment>Numero correspondiente a la seccion del eva, se toma el valor de origen mdl_course_sections VALIDAR SI EL CAMPO PUEDE ELIMINARSE</comment>
+            </column>
+        </property>
+        <property name="aedNumSeccionEva" type="big_decimal">
+            <column name="AED_NUM_SECCION_EVA" precision="22" scale="0">
+                <comment>Numero de la seccion del EVA VALIDAR SI EL CAMPO PUEDE ELIMINARSE</comment>
+            </column>
+        </property>
+        <property name="aedIdCursoEva" type="big_decimal">
+            <column name="AED_ID_CURSO_EVA" precision="22" scale="0">
+                <comment>Identificador principal curso del EVA</comment>
+            </column>
+        </property>
+        <property name="aedBimestreEva3" type="big_decimal">
+            <column name="AED_BIMESTRE_EVA3" precision="22" scale="0">
+                <comment>Bimestre para el que fue creada la actividad en el EVA</comment>
+            </column>
+        </property>
+        <property name="aedInteractuaConEstudiantes" type="string">
+            <column name="AED_INTERACTUA_CON_ESTUDIANTES" length="1" not-null="true">
+                <comment>Indica si el docente interactuo o no con los estudiantes durante la activadad planteada</comment>
+            </column>
+        </property>
+        <property name="aedTotalPostDocente" type="big_decimal">
+            <column name="AED_TOTAL_POST_DOCENTE" precision="22" scale="0" not-null="true">
+                <comment>Total de respuestas que crea el docente a la actividad que planteo</comment>
+            </column>
+        </property>
+        <property name="aedFechaPrimerPostEstudian" type="date">
+            <column name="AED_FECHA_PRIMER_POST_ESTUDIAN" length="7">
+                <comment>Indica la fecha de la primera respuesta de un estudiante a la activiadad planteada por el docente</comment>
+            </column>
+        </property>
+        <property name="aedTotalPostEstudiantes" type="big_decimal">
+            <column name="AED_TOTAL_POST_ESTUDIANTES" precision="22" scale="0" not-null="true">
+                <comment>Indica el total de respuestas dadas por los estudiantes. No es el n&#250;mero de estudiantes que respondi&#243; sino el n&#250;mero de respuestas. Es
+                decir si un estudiante respondi&#243; 2 veces se contar&#225;n las 2 respuestas.</comment>
+            </column>
+        </property>
+        <property name="aedNoCumplimiento" type="big_decimal">
+            <column name="AED_NO_CUMPLIMIENTO" precision="22" scale="0">
+                <comment>Numero de actividades que aunque se realizaron se consideran como NO CUMPLIMIENTO, porque los docentes no interactuan con los estudiantes</comment>
+            </column>
+        </property>
+        <property name="cevId" type="big_decimal">
+            <column name="CEV_ID" precision="22" scale="0">
+                <comment>Identificador principal de cuestionarios tabla de stage. Creado por: Silvana Vire Fecha creacion: 26/10/2016 Objetivo.- Enlazar con la tabla de
+                cuestionarios stage, para poder realizar el merge de extraccion</comment>
+            </column>
+        </property>
+        <property name="aevId" type="big_decimal">
+            <column name="AEV_ID" precision="22" scale="0">
+                <comment>Identificador principal de Anuncios tabla de stage. Creado por: Silvana Vire Fecha creacion: 16/11/2016 Objetivo.- Enlazar con la tabla de anuncios stage,
+                para poder realizar el merge de extraccion</comment>
+            </column>
+        </property>
+        <property name="aedVigente" type="string">
+            <column name="AED_VIGENTE" length="1" />
+        </property>
+        <property name="fevId" type="big_decimal">
+            <column name="FEV_ID" precision="22" scale="0">
+                <comment>Identificador principal foros tabla de stage. Creado por: Katty Landacay Fecha creacion: 24/10/2016 Objetivo.- Enlazar con la tabla de microvideos stage,
+                para poder realizar el merge de extraccion</comment>
+            </column>
+        </property>
+        <property name="piIdSem0" type="big_decimal">
+            <column name="PI_ID_SEM0" precision="22" scale="0">
+                <comment>Registra el PI_ID de la semana se crea las actividades del doecente principal en caso de seguimiento</comment>
+            </column>
+        </property>
+        <property name="aedFechaEnrolamiento" type="date">
+            <column name="AED_FECHA_ENROLAMIENTO" length="7">
+                <comment>Creado por: Silvana Vire Fecha creacion: 09/05/2017 Objetivo: Indica la fecha de enrolamiento del docente</comment>
+            </column>
+        </property>
+        <property name="dpiId" type="big_decimal">
+            <column name="DPI_ID" precision="22" scale="0">
+                <comment>Identificador principal detalle parametros indicador Agregado: 04/07/2017 Por: Katty Landacay Objetivo: Seguimiento de indicadores por curso segun su
+                parametrizacion</comment>
+            </column>
+        </property>
+        <property name="aedJustificacionId" type="big_decimal">
+            <column name="AED_JUSTIFICACION_ID" precision="22" scale="0">
+                <comment>Indica el tipo de justificaci&#243;n del porque se colocan los valores en OJETIVO, TOTAL, CUMPLIMIENTO, SEGUIMIENTO Y PORCENTAJE DE CUMPLIMINETO. Hace
+                referencia al catalogo TIPO_JUSTIFICACION_EVA: 0. Proceso normal, 1. Enrolamiento tard&#237;o Creado por: Silvana Vire Agregado el: 28/08/2017 Objetivo: Detectar
+                el cambio de valores por justificaciones</comment>
+            </column>
+        </property>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,113 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 01/09/2017 12:34:09 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="ec.edu.utpl.svied.model.TdsUsuario" table="TDS_USUARIO" schema="ESQ_SIEC" optimistic-lock="version">
+        <comment>Almacena los usuarios que tendr&#225;n acceso a la informaci&#243;n</comment>
+        <id name="usId" type="big_decimal">
+            <column name="US_ID" precision="22" scale="0" />
+            <generator class="assigned" />
+        </id>
+        <property name="usNombre" type="string">
+            <column name="US_NOMBRE" length="100" not-null="true">
+                <comment>Indica el Nombre de usuario</comment>
+            </column>
+        </property>
+        <property name="usFechaInicioVig" type="date">
+            <column name="US_FECHA_INICIO_VIG" length="7" not-null="true">
+                <comment>Indica la Fecha de inicio vigencia</comment>
+            </column>
+        </property>
+        <property name="usFechaFinVig" type="date">
+            <column name="US_FECHA_FIN_VIG" length="7">
+                <comment>Indica la Fecha de fin vigencia</comment>
+            </column>
+        </property>
+        <property name="usVigencia" type="string">
+            <column name="US_VIGENCIA" length="1" not-null="true">
+                <comment>Indica el Estado de vigencia: S:Si, N:No. Por defecto S:Si</comment>
+            </column>
+        </property>
+        <property name="usUsername" type="string">
+            <column name="US_USERNAME" length="30" not-null="true" unique="true">
+                <comment>Indica el login del usuario</comment>
+            </column>
+        </property>
+        <property name="usPassword" type="string">
+            <column name="US_PASSWORD" length="40" />
+        </property>
+        <property name="usBloqueado" type="string">
+            <column name="US_BLOQUEADO" length="4" not-null="true" />
+        </property>
+        <property name="usFechaCreacion" type="date">
+            <column name="US_FECHA_CREACION" length="7" />
+        </property>
+        <property name="usFechaUltActualizacion" type="date">
+            <column name="US_FECHA_ULT_ACTUALIZACION" length="7" />
+        </property>
+        <property name="usuarioApexCrea" type="string">
+            <column name="USUARIO_APEX_CREA" length="35" />
+        </property>
+        <property name="usuarioApexUltActualizacion" type="string">
+            <column name="USUARIO_APEX_ULT_ACTUALIZACION" length="35" />
+        </property>
+        <property name="usObservaciones" type="string">
+            <column name="US_OBSERVACIONES" length="350" />
+        </property>
+        <property name="usCambiarClavePrimeraVez" type="string">
+            <column name="US_CAMBIAR_CLAVE_PRIMERA_VEZ" length="1">
+                <comment>Indica si el usuario debe cambiar su clave por primera vez</comment>
+            </column>
+        </property>
+        <property name="usHabilitado" type="big_decimal">
+            <column name="US_HABILITADO" precision="22" scale="0" />
+        </property>
+        <property name="usCorreo" type="string">
+            <column name="US_CORREO" length="50">
+                <comment>Correo del usuario - se lo utilizara para enviar notificaciones</comment>
+            </column>
+        </property>
+        <property name="usTipoUsuario" type="big_decimal">
+            <column name="US_TIPO_USUARIO" precision="22" scale="0">
+                <comment>Hace referencia al catalogo TIPO_USUARIO</comment>
+            </column>
+        </property>
+        <property name="usIdentificacion" type="string">
+            <column name="US_IDENTIFICACION" length="30" />
+        </property>
+        <property name="usSolicitadoPor" type="string">
+            <column name="US_SOLICITADO_POR" length="100" />
+        </property>
+        <set name="tdiPeriodos" table="TDI_PERIODO" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="US_ID" precision="22" scale="0">
+                    <comment>Identificador principal Usuario</comment>
+                </column>
+            </key>
+            <one-to-many class="ec.edu.utpl.svied.model.TdiPeriodo" />
+        </set>
+        <set name="tdsRolUsuarios" table="TDS_ROL_USUARIO" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="US_ID" precision="22" scale="0" not-null="true">
+                    <comment>Identificador principal de usuario</comment>
+                </column>
+            </key>
+            <one-to-many class="ec.edu.utpl.svied.model.TdsRolUsuario" />
+        </set>
+        <set name="tdiDocentes" table="TDI_DOCENTE" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="DO_VALIDADOR_RRHH" precision="22" scale="0" />
+            </key>
+            <one-to-many class="ec.edu.utpl.svied.model.TdiDocente" />
+        </set>
+        <set name="tdiPeriodoDetalles" table="TDI_PERIODO_DETALLE" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="US_ID" precision="22" scale="0">
+                    <comment>Identificador de usuario que ingresa la informaci&#243;n</comment>
+                </column>
+            </key>
+            <one-to-many class="ec.edu.utpl.svied.model.TdiPeriodoDetalle" />
+        </set>
+    </class>
+</hibernate-mapping>

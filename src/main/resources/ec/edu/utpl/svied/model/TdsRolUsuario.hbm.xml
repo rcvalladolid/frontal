@@ -1,0 +1,50 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 01/09/2017 12:34:09 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="ec.edu.utpl.svied.model.TdsRolUsuario" table="TDS_ROL_USUARIO" schema="ESQ_SIEC" optimistic-lock="version">
+        <comment>Pemirte almacenar los rol con los usuarios que los poseen</comment>
+        <id name="ruId" type="big_decimal">
+            <column name="RU_ID" precision="22" scale="0" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="tdsRol" class="ec.edu.utpl.svied.model.TdsRol" fetch="select">
+            <column name="RO_ID" precision="22" scale="0" not-null="true">
+                <comment>Identificador principal del rol</comment>
+            </column>
+        </many-to-one>
+        <many-to-one name="tdsUsuario" class="ec.edu.utpl.svied.model.TdsUsuario" fetch="select">
+            <column name="US_ID" precision="22" scale="0" not-null="true">
+                <comment>Identificador principal de usuario</comment>
+            </column>
+        </many-to-one>
+        <property name="ruFechaInicioVig" type="date">
+            <column name="RU_FECHA_INICIO_VIG" length="7" not-null="true">
+                <comment>Estado inicio vigencia del rol usuario</comment>
+            </column>
+        </property>
+        <property name="ruFechaFinVig" type="date">
+            <column name="RU_FECHA_FIN_VIG" length="7">
+                <comment>Estado fin vigencia del rol usuario</comment>
+            </column>
+        </property>
+        <property name="ruVigente" type="string">
+            <column name="RU_VIGENTE" length="1" not-null="true">
+                <comment>Estado rol usuario</comment>
+            </column>
+        </property>
+        <property name="ruFechaCreacion" type="date">
+            <column name="RU_FECHA_CREACION" length="7" />
+        </property>
+        <property name="ruFechaUtlAct" type="date">
+            <column name="RU_FECHA_UTL_ACT" length="7" />
+        </property>
+        <property name="usuarioApexCrea" type="string">
+            <column name="USUARIO_APEX_CREA" length="50" />
+        </property>
+        <property name="usuarioApexUltAct" type="string">
+            <column name="USUARIO_APEX_ULT_ACT" length="50" />
+        </property>
+    </class>
+</hibernate-mapping>

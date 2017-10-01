@@ -1,0 +1,156 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 01/09/2017 12:34:09 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="ec.edu.utpl.svied.model.TdiCentroUniversitario" table="TDI_CENTRO_UNIVERSITARIO" schema="ESQ_SIEC" optimistic-lock="version">
+        <comment>Permite almacenar los centros universitarios y sus equivalencias con otros sistemas</comment>
+        <id name="cuId" type="big_decimal">
+            <column name="CU_ID" precision="22" scale="0" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="tdiGlosarioByCuIdProvincia" class="ec.edu.utpl.svied.model.TdiGlosario" fetch="select">
+            <column name="CU_ID_PROVINCIA" precision="22" scale="0">
+                <comment>Indica la provincia a la que pertence el centro. Hace referencia al catalogo DIC_CODIGO_GRUPO (PROVINCIA)</comment>
+            </column>
+        </many-to-one>
+        <many-to-one name="tdiGlosarioByCuTipoSede" class="ec.edu.utpl.svied.model.TdiGlosario" fetch="select">
+            <column name="CU_TIPO_SEDE" precision="22" scale="0">
+                <comment>India el tipo de sede: MATRIZ, EXTENSION, CENTRO. Hace referencia al catalogo TIPO_SEDE</comment>
+            </column>
+        </many-to-one>
+        <many-to-one name="tdiGlosarioByCuTipoCentro" class="ec.edu.utpl.svied.model.TdiGlosario" fetch="select">
+            <column name="CU_TIPO_CENTRO" precision="22" scale="0">
+                <comment>Indica el tipo de centro: INTERNACIONAL, PROVINCIAL, SUBSCENTRO, etc. Hace referencia al catalogo TIPO_CENTRO</comment>
+            </column>
+        </many-to-one>
+        <property name="cuCodigo" type="string">
+            <column name="CU_CODIGO" length="30" not-null="true">
+                <comment>Codigo del Centro</comment>
+            </column>
+        </property>
+        <property name="cuNombre" type="string">
+            <column name="CU_NOMBRE" length="100" not-null="true">
+                <comment>Nombre del Centro</comment>
+            </column>
+        </property>
+        <property name="cuFechaCreacion" type="date">
+            <column name="CU_FECHA_CREACION" length="7" not-null="true">
+                <comment>Fecha creaci&#243;n</comment>
+            </column>
+        </property>
+        <property name="cuFechaActualizacion" type="date">
+            <column name="CU_FECHA_ACTUALIZACION" length="7">
+                <comment>Fecha de la ultima actualizacion</comment>
+            </column>
+        </property>
+        <property name="cuVigente" type="string">
+            <column name="CU_VIGENTE" length="1">
+                <comment>Indica si el centro universitario esta Vigente o no</comment>
+            </column>
+        </property>
+        <property name="cuEquIdNsga" type="big_decimal">
+            <column name="CU_EQU_ID_NSGA" precision="22" scale="0" not-null="true">
+                <comment>Equivalencia ID del NSGA</comment>
+            </column>
+        </property>
+        <property name="cuEquNombreNsga" type="string">
+            <column name="CU_EQU_NOMBRE_NSGA" length="100" not-null="true">
+                <comment>Equivalencia Nombre del NSGA</comment>
+            </column>
+        </property>
+        <property name="cuEquIdSga" type="big_decimal">
+            <column name="CU_EQU_ID_SGA" precision="22" scale="0">
+                <comment>Equivalencia ID del SGA</comment>
+            </column>
+        </property>
+        <property name="cuEquNombreSga" type="string">
+            <column name="CU_EQU_NOMBRE_SGA" length="100">
+                <comment>Equivalencia Nombre del SGA</comment>
+            </column>
+        </property>
+        <property name="cuEquIdEva" type="big_decimal">
+            <column name="CU_EQU_ID_EVA" precision="22" scale="0">
+                <comment>Equivalencia ID del EVA</comment>
+            </column>
+        </property>
+        <property name="cuEquNombreEva" type="string">
+            <column name="CU_EQU_NOMBRE_EVA" length="100">
+                <comment>Equivalencia Nombre del EVA</comment>
+            </column>
+        </property>
+        <property name="cuEquIdRrhh" type="big_decimal">
+            <column name="CU_EQU_ID_RRHH" precision="22" scale="0">
+                <comment>Equivalencia ID del RRHH</comment>
+            </column>
+        </property>
+        <property name="cuEquNombreRrhh" type="string">
+            <column name="CU_EQU_NOMBRE_RRHH" length="100">
+                <comment>Equivalencia Nombre del RRHH</comment>
+            </column>
+        </property>
+        <property name="cuValidado" type="string">
+            <column name="CU_VALIDADO" length="1" not-null="true">
+                <comment>Indica si el registro esta o no validado su infomacion</comment>
+            </column>
+        </property>
+        <property name="cuIdPadre" type="big_decimal">
+            <column name="CU_ID_PADRE" precision="22" scale="0">
+                <comment>Indica el identificador del padre del centro universitario</comment>
+            </column>
+        </property>
+        <property name="cuLongitud" type="big_decimal">
+            <column name="CU_LONGITUD" precision="22" scale="0">
+                <comment>Sirve para realizar la ubicacion geografica del centro</comment>
+            </column>
+        </property>
+        <property name="cuLatitud" type="big_decimal">
+            <column name="CU_LATITUD" precision="22" scale="0">
+                <comment>Sirve para realizar la ubicacion geografica del centro</comment>
+            </column>
+        </property>
+        <property name="cuDireccion" type="string">
+            <column name="CU_DIRECCION" length="500">
+                <comment>Direccion del centro universitario</comment>
+            </column>
+        </property>
+        <property name="cuTelefono" type="string">
+            <column name="CU_TELEFONO" length="25">
+                <comment>Numero de telefono del centro universitario</comment>
+            </column>
+        </property>
+        <property name="cuFax" type="string">
+            <column name="CU_FAX" length="25">
+                <comment>N&#250;mero de fax del centro universitario</comment>
+            </column>
+        </property>
+        <property name="cuCorreo" type="string">
+            <column name="CU_CORREO" length="100">
+                <comment>email del centro universitario</comment>
+            </column>
+        </property>
+        <property name="cuTipoRegion" type="string">
+            <column name="CU_TIPO_REGION" length="1">
+                <comment>Tipo de Regi&#243;n: C=COSTA, S=SIERRA, O=ORIENTE, I=INSULAR, E=EXTRANJERA, V:VIRTUAL, N:NO ASIGNADA</comment>
+            </column>
+        </property>
+        <property name="cuIdCanton" type="big_decimal">
+            <column name="CU_ID_CANTON" precision="22" scale="0">
+                <comment>Indica el canton a la que pertence el centro. Hace referencia al catalogo DIC_CODIGO_GRUPO (CANTON)</comment>
+            </column>
+        </property>
+        <property name="cuIdPais" type="big_decimal">
+            <column name="CU_ID_PAIS" precision="22" scale="0">
+                <comment>Indica el pais a la que pertence el centro. Hace referencia al catalogo DIC_CODIGO_GRUPO (PAISES)</comment>
+            </column>
+        </property>
+        <set name="tdiDocentes" table="TDI_DOCENTE" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="CU_ID" precision="22" scale="0">
+                    <comment>Identificador principal del centro universitario</comment>
+                </column>
+            </key>
+            <one-to-many class="ec.edu.utpl.svied.model.TdiDocente" />
+        </set>
+    </class>
+</hibernate-mapping>

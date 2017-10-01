@@ -1,0 +1,251 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 01/09/2017 12:34:09 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="ec.edu.utpl.svied.model.TheActividadesEvaAvance" table="THE_ACTIVIDADES_EVA_AVANCE" schema="ESQ_SIEC" optimistic-lock="version">
+        <comment>Contiene el reporte de los resultados obtenidos por el docente en el componente paralelo asignado de cada indicador acad&#233;mico los mismos que se colocan como
+        columnas</comment>
+        <id name="aeaId" type="big_decimal">
+            <column name="AEA_ID" precision="22" scale="0" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="tdiComponenteEducativo" class="ec.edu.utpl.svied.model.TdiComponenteEducativo" fetch="select">
+            <column name="CE_ID" precision="22" scale="0" not-null="true">
+                <comment>Identificador principal del componente</comment>
+            </column>
+        </many-to-one>
+        <many-to-one name="tdiOfertaNsga" class="ec.edu.utpl.svied.model.TdiOfertaNsga" fetch="select">
+            <column name="ONS_ID" precision="22" scale="0" not-null="true">
+                <comment>Identificador principal oferta detalle nsga en el SIEC</comment>
+            </column>
+        </many-to-one>
+        <many-to-one name="tdiArea" class="ec.edu.utpl.svied.model.TdiArea" fetch="select">
+            <column name="AR_ID_CE" precision="22" scale="0" not-null="true">
+                <comment>Identificador principal area del componente</comment>
+            </column>
+        </many-to-one>
+        <many-to-one name="tdiDepartamento" class="ec.edu.utpl.svied.model.TdiDepartamento" fetch="select">
+            <column name="DE_ID_CE" precision="22" scale="0" not-null="true">
+                <comment>Identificador principal departamento del componente</comment>
+            </column>
+        </many-to-one>
+        <many-to-one name="tdiDocente" class="ec.edu.utpl.svied.model.TdiDocente" fetch="select">
+            <column name="DO_ID" precision="22" scale="0" not-null="true">
+                <comment>Identificador principal docente</comment>
+            </column>
+        </many-to-one>
+        <many-to-one name="tdiModalidad" class="ec.edu.utpl.svied.model.TdiModalidad" fetch="select">
+            <column name="MO_ID" precision="22" scale="0" not-null="true">
+                <comment>Identificador principal modalidad de la oferta</comment>
+            </column>
+        </many-to-one>
+        <many-to-one name="tdiNivelAcademico" class="ec.edu.utpl.svied.model.TdiNivelAcademico" fetch="select">
+            <column name="NA_ID" precision="22" scale="0" not-null="true">
+                <comment>Identificador principal nivel acad&#233;mico de la oferta</comment>
+            </column>
+        </many-to-one>
+        <many-to-one name="tdiPeriodo" class="ec.edu.utpl.svied.model.TdiPeriodo" fetch="select">
+            <column name="PE_ID" precision="22" scale="0" not-null="true">
+                <comment>Identificador principal periodo acad&#233;mico</comment>
+            </column>
+        </many-to-one>
+        <many-to-one name="tdiSeccionDepartamental" class="ec.edu.utpl.svied.model.TdiSeccionDepartamental" fetch="select">
+            <column name="SE_ID_CE" precision="22" scale="0" not-null="true">
+                <comment>Identificador principal secci&#243;n del componente</comment>
+            </column>
+        </many-to-one>
+        <many-to-one name="tdiGlosario" class="ec.edu.utpl.svied.model.TdiGlosario" fetch="select">
+            <column name="AEA_PARALELO_ID" precision="22" scale="0" not-null="true">
+                <comment>Identificador principal paralelo</comment>
+            </column>
+        </many-to-one>
+        <many-to-one name="tdiPeriodoDetalle" class="ec.edu.utpl.svied.model.TdiPeriodoDetalle" fetch="select">
+            <column name="PT_ID" precision="22" scale="0" />
+        </many-to-one>
+        <property name="aeaFrecuenciaNumeracion" type="string">
+            <column name="AEA_FRECUENCIA_NUMERACION" length="5" not-null="true">
+                <comment>Es la union del tipo de frecuencia (Semanal, bimestral, etc), mas la numeraci&#243;n de la misma. Ejemplo SM 1: Indica que el registro corresponde a la
+                semana 1.</comment>
+            </column>
+        </property>
+        <property name="aeaFrecuencia" type="string">
+            <column name="AEA_FRECUENCIA" length="5" />
+        </property>
+        <property name="aeaNumeracion" type="big_decimal">
+            <column name="AEA_NUMERACION" precision="22" scale="0" />
+        </property>
+        <property name="aecExcepcion" type="big_decimal">
+            <column name="AEC_EXCEPCION" precision="22" scale="0" />
+        </property>
+        <property name="aeaObjMicro1er" type="big_decimal">
+            <column name="AEA_OBJ_MICRO_1ER" precision="22" scale="0">
+                <comment>Indica el objetivo a cumplirse del indicador MICROVIDEO DE PRIMER CICLO O FORMACION BASICA. Tomando en cuenta la columna frecuencia</comment>
+            </column>
+        </property>
+        <property name="aeaTotalMicro1er" type="big_decimal">
+            <column name="AEA_TOTAL_MICRO_1ER" precision="22" scale="0">
+                <comment>Indica el valor del cumplimiento realizado del indicador MICROVIDEO DE PRIMER CICLO O FORMACION BASICA. Tomando en cuenta la columna frecuencia.</comment>
+            </column>
+        </property>
+        <property name="aeaCumplimientoMicro1er" type="big_decimal">
+            <column name="AEA_CUMPLIMIENTO_MICRO_1ER" precision="22" scale="0" />
+        </property>
+        <property name="aeaSeguimientoMicro1er" type="big_decimal">
+            <column name="AEA_SEGUIMIENTO_MICRO_1ER" precision="22" scale="0" />
+        </property>
+        <property name="aeaPorcObtMicro1er" type="big_decimal">
+            <column name="AEA_PORC_OBT_MICRO_1ER" precision="22" scale="0" />
+        </property>
+        <property name="aeaSemaforoMicro1er" type="string">
+            <column name="AEA_SEMAFORO_MICRO_1ER" length="15" />
+        </property>
+        <property name="aeaObjMicro2do" type="big_decimal">
+            <column name="AEA_OBJ_MICRO_2DO" precision="22" scale="0">
+                <comment>Indica el objetivo a cumplirse del indicador MICROVIDEO DE SEGUNDO CICLO Y EN ADELANTE. Tomando en cuenta la columna frecuencia</comment>
+            </column>
+        </property>
+        <property name="aeaTotalMicro2do" type="big_decimal">
+            <column name="AEA_TOTAL_MICRO_2DO" precision="22" scale="0">
+                <comment>Indica el valor del cumplimiento realizado del indicador MICROVIDEO DE SEGUNDO CICLO EN ADELANTE. Tomando en cuenta la columna frecuencia.</comment>
+            </column>
+        </property>
+        <property name="aeaCumplimientoMicro2do" type="big_decimal">
+            <column name="AEA_CUMPLIMIENTO_MICRO_2DO" precision="22" scale="0" />
+        </property>
+        <property name="aeaSeguimientoMicro2do" type="big_decimal">
+            <column name="AEA_SEGUIMIENTO_MICRO_2DO" precision="22" scale="0" />
+        </property>
+        <property name="aeaPorcObtMicro2do" type="big_decimal">
+            <column name="AEA_PORC_OBT_MICRO_2DO" precision="22" scale="0" />
+        </property>
+        <property name="aeaSemaforoMicro2do" type="string">
+            <column name="AEA_SEMAFORO_MICRO_2DO" length="15" />
+        </property>
+        <property name="aeaObjChatAcad" type="big_decimal">
+            <column name="AEA_OBJ_CHAT_ACAD" precision="22" scale="0">
+                <comment>Indica el objetivo a cumplirse del indicador CHAT ACADEMICO. Tomando en cuenta la columna frecuencia</comment>
+            </column>
+        </property>
+        <property name="aeaTotalChatAcad" type="big_decimal">
+            <column name="AEA_TOTAL_CHAT_ACAD" precision="22" scale="0">
+                <comment>Indica el valor del cumplimiento realizado del indicador CHAT ACADEMICO. Tomando en cuenta la columna frecuencia.</comment>
+            </column>
+        </property>
+        <property name="aeaCumplimientoChatAcad" type="big_decimal">
+            <column name="AEA_CUMPLIMIENTO_CHAT_ACAD" precision="22" scale="0" />
+        </property>
+        <property name="aeaSeguimientoChatAcad" type="big_decimal">
+            <column name="AEA_SEGUIMIENTO_CHAT_ACAD" precision="22" scale="0" />
+        </property>
+        <property name="aeaPorcObtChatAcad" type="big_decimal">
+            <column name="AEA_PORC_OBT_CHAT_ACAD" precision="22" scale="0" />
+        </property>
+        <property name="aeaSemaforoChatAcad" type="string">
+            <column name="AEA_SEMAFORO_CHAT_ACAD" length="15" />
+        </property>
+        <property name="aeaObjChatTut" type="big_decimal">
+            <column name="AEA_OBJ_CHAT_TUT" precision="22" scale="0">
+                <comment>Indica el objetivo a cumplirse del indicador CHAT TUTORIA. Tomando en cuenta la columna frecuencia</comment>
+            </column>
+        </property>
+        <property name="aeaTotalChatTut" type="big_decimal">
+            <column name="AEA_TOTAL_CHAT_TUT" precision="22" scale="0">
+                <comment>Indica el valor del cumplimiento realizado del indicador CHAT TUTORIA. Tomando en cuenta la columna frecuencia.</comment>
+            </column>
+        </property>
+        <property name="aeaCumplimientoChatTut" type="big_decimal">
+            <column name="AEA_CUMPLIMIENTO_CHAT_TUT" precision="22" scale="0" />
+        </property>
+        <property name="aeaSeguimientoChatTut" type="big_decimal">
+            <column name="AEA_SEGUIMIENTO_CHAT_TUT" precision="22" scale="0" />
+        </property>
+        <property name="aeaPorcObtChatTut" type="big_decimal">
+            <column name="AEA_PORC_OBT_CHAT_TUT" precision="22" scale="0" />
+        </property>
+        <property name="aeaSemaforoChatTut" type="string">
+            <column name="AEA_SEMAFORO_CHAT_TUT" length="15" />
+        </property>
+        <property name="aeaObjCuesti" type="big_decimal">
+            <column name="AEA_OBJ_CUESTI" precision="22" scale="0">
+                <comment>Indica el objetivo a cumplirse del indicador CUESTIONARIO. Tomando en cuenta la columna frecuencia</comment>
+            </column>
+        </property>
+        <property name="aeaTotalCuesti" type="big_decimal">
+            <column name="AEA_TOTAL_CUESTI" precision="22" scale="0">
+                <comment>Indica el valor del cumplimiento realizado del indicador CUESTIONARIOS. Tomando en cuenta la columna frecuencia.</comment>
+            </column>
+        </property>
+        <property name="aeaCumplimientoCuesti" type="big_decimal">
+            <column name="AEA_CUMPLIMIENTO_CUESTI" precision="22" scale="0" />
+        </property>
+        <property name="aeaSeguimientoCuesti" type="big_decimal">
+            <column name="AEA_SEGUIMIENTO_CUESTI" precision="22" scale="0" />
+        </property>
+        <property name="aeaPorcObtCuesti" type="big_decimal">
+            <column name="AEA_PORC_OBT_CUESTI" precision="22" scale="0" />
+        </property>
+        <property name="aeaSemaforoCuesti" type="string">
+            <column name="AEA_SEMAFORO_CUESTI" length="15" />
+        </property>
+        <property name="aeaObjForo" type="big_decimal">
+            <column name="AEA_OBJ_FORO" precision="22" scale="0">
+                <comment>Indica el objetivo a cumplirse del indicador FORO. Tomando en cuenta la columna frecuencia</comment>
+            </column>
+        </property>
+        <property name="aeaTotalForo" type="big_decimal">
+            <column name="AEA_TOTAL_FORO" precision="22" scale="0" />
+        </property>
+        <property name="aeaCumplimientoForo" type="big_decimal">
+            <column name="AEA_CUMPLIMIENTO_FORO" precision="22" scale="0" />
+        </property>
+        <property name="aeaSeguimientoForo" type="big_decimal">
+            <column name="AEA_SEGUIMIENTO_FORO" precision="22" scale="0" />
+        </property>
+        <property name="aeaPorcObtForo" type="big_decimal">
+            <column name="AEA_PORC_OBT_FORO" precision="22" scale="0" />
+        </property>
+        <property name="aeaSemaforoForo" type="string">
+            <column name="AEA_SEMAFORO_FORO" length="15" />
+        </property>
+        <property name="aeaObjAnuncio" type="big_decimal">
+            <column name="AEA_OBJ_ANUNCIO" precision="22" scale="0">
+                <comment>Indica el objetivo a cumplirse del indicador ANUNCIO. Tomando en cuenta la columna frecuencia</comment>
+            </column>
+        </property>
+        <property name="aeaTotalAnuncio" type="big_decimal">
+            <column name="AEA_TOTAL_ANUNCIO" precision="22" scale="0" />
+        </property>
+        <property name="aeaCumplimientoAnuncio" type="big_decimal">
+            <column name="AEA_CUMPLIMIENTO_ANUNCIO" precision="22" scale="0" />
+        </property>
+        <property name="aeaSeguimientoAnuncio" type="big_decimal">
+            <column name="AEA_SEGUIMIENTO_ANUNCIO" precision="22" scale="0" />
+        </property>
+        <property name="aeaPorcObtAnuncio" type="big_decimal">
+            <column name="AEA_PORC_OBT_ANUNCIO" precision="22" scale="0" />
+        </property>
+        <property name="aeaSemaforoAnuncio" type="string">
+            <column name="AEA_SEMAFORO_ANUNCIO" length="15" />
+        </property>
+        <property name="aeaFechaCreacionSiec" type="date">
+            <column name="AEA_FECHA_CREACION_SIEC" length="7">
+                <comment>Fecha en que se crea el registro en el SIEC</comment>
+            </column>
+        </property>
+        <property name="aeaFechaUltActSiec" type="date">
+            <column name="AEA_FECHA_ULT_ACT_SIEC" length="7">
+                <comment>Fecha en que se actualiza el registro en el SIEC</comment>
+            </column>
+        </property>
+        <property name="aeaProceso" type="string">
+            <column name="AEA_PROCESO" length="30" />
+        </property>
+        <property name="aeaTotMatriculados" type="big_decimal">
+            <column name="AEA_TOT_MATRICULADOS" precision="22" scale="0" />
+        </property>
+        <property name="aeaCursoIdEva" type="big_decimal">
+            <column name="AEA_CURSO_ID_EVA" precision="22" scale="0" />
+        </property>
+    </class>
+</hibernate-mapping>

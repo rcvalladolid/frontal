@@ -1,0 +1,226 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 01/09/2017 12:34:09 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="ec.edu.utpl.svied.model.TdiIndicador" table="TDI_INDICADOR" schema="ESQ_SIEC" optimistic-lock="version">
+        <comment>Permite almacenar los indicadores</comment>
+        <id name="idId" type="big_decimal">
+            <column name="ID_ID" precision="22" scale="0" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="tdiCriteriosEvaluacion" class="ec.edu.utpl.svied.model.TdiCriteriosEvaluacion" fetch="select">
+            <column name="CV_ID" precision="22" scale="0">
+                <comment>Identificador principal del criterio BORRARLO LUEGO DE TERMINAR LA APP</comment>
+            </column>
+        </many-to-one>
+        <property name="idNombre" type="string">
+            <column name="ID_NOMBRE" length="100" not-null="true">
+                <comment>Nombre indicador</comment>
+            </column>
+        </property>
+        <property name="idDescripcion" type="string">
+            <column name="ID_DESCRIPCION" length="4000">
+                <comment>Descripcion indicador</comment>
+            </column>
+        </property>
+        <property name="idFechaInicio" type="date">
+            <column name="ID_FECHA_INICIO" length="7" not-null="true">
+                <comment>Fecha inicio de vigencia</comment>
+            </column>
+        </property>
+        <property name="idFechaFin" type="date">
+            <column name="ID_FECHA_FIN" length="7">
+                <comment>Fecha fin de vigencia</comment>
+            </column>
+        </property>
+        <property name="idVigencia" type="string">
+            <column name="ID_VIGENCIA" length="1" not-null="true">
+                <comment>Estado de Vigencia</comment>
+            </column>
+        </property>
+        <property name="idFormulaGeneral" type="string">
+            <column name="ID_FORMULA_GENERAL" length="4000">
+                <comment>Indica la formula general en forma de texto no de base de datos</comment>
+            </column>
+        </property>
+        <property name="idObjetivo" type="string">
+            <column name="ID_OBJETIVO" length="4000">
+                <comment>Indica el objetivo del indicador</comment>
+            </column>
+        </property>
+        <property name="idObservacionesGenerales" type="string">
+            <column name="ID_OBSERVACIONES_GENERALES" length="4000">
+                <comment>Indica observaciones generales de los indicadores</comment>
+            </column>
+        </property>
+        <property name="idCuantitativo" type="string">
+            <column name="ID_CUANTITATIVO" length="1" not-null="true">
+                <comment>Indica si el indicador es CUANTITATIVO o no. Si es no significa que es CUALITATIVO</comment>
+            </column>
+        </property>
+        <property name="idPeso" type="big_decimal">
+            <column name="ID_PESO" precision="22" scale="0">
+                <comment>Indica el peso obtenido</comment>
+            </column>
+        </property>
+        <property name="idFrecuencia" type="string">
+            <column name="ID_FRECUENCIA" length="20" />
+        </property>
+        <property name="idNumeracion" type="string">
+            <column name="ID_NUMERACION" length="10" />
+        </property>
+        <property name="idPadre" type="big_decimal">
+            <column name="ID_PADRE" precision="22" scale="0" />
+        </property>
+        <property name="idOrdenGrupo" type="big_decimal">
+            <column name="ID_ORDEN_GRUPO" precision="22" scale="0" />
+        </property>
+        <property name="idNombreValorCumplimiento" type="string">
+            <column name="ID_NOMBRE_VALOR_CUMPLIMIENTO" length="100">
+                <comment>borrar</comment>
+            </column>
+        </property>
+        <property name="idNombreValorNoCumplimient" type="string">
+            <column name="ID_NOMBRE_VALOR_NO_CUMPLIMIENT" length="100">
+                <comment>borrar</comment>
+            </column>
+        </property>
+        <property name="idNombreValorProgramado" type="string">
+            <column name="ID_NOMBRE_VALOR_PROGRAMADO" length="100">
+                <comment>borrar</comment>
+            </column>
+        </property>
+        <property name="scvId1" type="big_decimal">
+            <column name="SCV_ID_1" precision="22" scale="0">
+                <comment>Indica el sub-criterio de evaluacion 1</comment>
+            </column>
+        </property>
+        <property name="scvId2" type="big_decimal">
+            <column name="SCV_ID_2" precision="22" scale="0">
+                <comment>Indica el sub-criterio de evaluacion 2</comment>
+            </column>
+        </property>
+        <property name="idEstadoFase1Analisis" type="big_decimal">
+            <column name="ID_ESTADO_FASE1_ANALISIS" precision="22" scale="0">
+                <comment>Indica el estado del indicador en la fase 1 de su implementaci&#243;n que es el an&#225;lisi</comment>
+            </column>
+        </property>
+        <property name="idEstadoFase2BaseDatos" type="big_decimal">
+            <column name="ID_ESTADO_FASE2_BASE_DATOS" precision="22" scale="0">
+                <comment>Indica el estado del indicador en la fase 2 de su implementaci&#243;n que es todo lo referente a la base de datos</comment>
+            </column>
+        </property>
+        <property name="idEstadoFase3Visualizacion" type="big_decimal">
+            <column name="ID_ESTADO_FASE3_VISUALIZACION" precision="22" scale="0">
+                <comment>Indica el estado del indicador en la fase 3 de su implementaci&#243;n que engloba todo el tema referente a la visualizacion y presenteacion de los
+                resultados y evidencias</comment>
+            </column>
+        </property>
+        <property name="idEstadoFase4Validacion" type="big_decimal">
+            <column name="ID_ESTADO_FASE4_VALIDACION" precision="22" scale="0">
+                <comment>Indica el estado del indicador en la fase 4 de su implementaci&#243;n que engloba todo lo referente a la validacion y control de calidad</comment>
+            </column>
+        </property>
+        <property name="idFechaCreacion" type="date">
+            <column name="ID_FECHA_CREACION" length="7" />
+        </property>
+        <property name="usuarioCreaApex" type="string">
+            <column name="USUARIO_CREA_APEX" length="50" />
+        </property>
+        <property name="idFechaUltAct" type="date">
+            <column name="ID_FECHA_ULT_ACT" length="7" />
+        </property>
+        <property name="usuarioUltActApex" type="string">
+            <column name="USUARIO_ULT_ACT_APEX" length="50" />
+        </property>
+        <property name="idGenerarAreaDocente" type="string">
+            <column name="ID_GENERAR_AREA_DOCENTE" length="1">
+                <comment>Indica si el indicador se debe generar por area del docente</comment>
+            </column>
+        </property>
+        <property name="idGenerarDepDocente" type="string">
+            <column name="ID_GENERAR_DEP_DOCENTE" length="1">
+                <comment>Indica si el indicador se debe generar por departamento del docente</comment>
+            </column>
+        </property>
+        <property name="idGenerarSeccionDocente" type="string">
+            <column name="ID_GENERAR_SECCION_DOCENTE" length="1">
+                <comment>Indica si el indicador se debe generar por seccion del docente</comment>
+            </column>
+        </property>
+        <property name="idGenerarAreaComponente" type="string">
+            <column name="ID_GENERAR_AREA_COMPONENTE" length="1">
+                <comment>Indica si el indicador se debe generar por area del componente</comment>
+            </column>
+        </property>
+        <property name="idGenerarDepComponente" type="string">
+            <column name="ID_GENERAR_DEP_COMPONENTE" length="1">
+                <comment>Indica si el indicador se debe generar por departamento del componente</comment>
+            </column>
+        </property>
+        <property name="idGenerarSeccionComponente" type="string">
+            <column name="ID_GENERAR_SECCION_COMPONENTE" length="1">
+                <comment>Indica si el indicador se debe generar por seccion del componente</comment>
+            </column>
+        </property>
+        <property name="idGenerarAreaTitulacion" type="string">
+            <column name="ID_GENERAR_AREA_TITULACION" length="1">
+                <comment>Indica si el indicador se debe generar por area de la titulacion</comment>
+            </column>
+        </property>
+        <property name="idGenerarTitulacion" type="string">
+            <column name="ID_GENERAR_TITULACION" length="1">
+                <comment>Indica si el indicador se debe generar por titulacion</comment>
+            </column>
+        </property>
+        <property name="idGenerarComponente" type="string">
+            <column name="ID_GENERAR_COMPONENTE" length="1">
+                <comment>Indica si el indicador se debe generar por componente</comment>
+            </column>
+        </property>
+        <property name="idCodigo" type="string">
+            <column name="ID_CODIGO" length="30" />
+        </property>
+        <set name="theActividadesDocEvaCabs" table="THE_ACTIVIDADES_DOC_EVA_CAB" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="ID_ID" precision="22" scale="0" not-null="true">
+                    <comment>Identificador prinicpal indicador</comment>
+                </column>
+            </key>
+            <one-to-many class="ec.edu.utpl.svied.model.TheActividadesDocEvaCab" />
+        </set>
+        <set name="tdiParametrosIndicadors" table="TDI_PARAMETROS_INDICADOR" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="ID_ID" precision="22" scale="0" not-null="true">
+                    <comment>Identificador de la tabla indicador</comment>
+                </column>
+            </key>
+            <one-to-many class="ec.edu.utpl.svied.model.TdiParametrosIndicador" />
+        </set>
+        <set name="tdiRangosSemaforos" table="TDI_RANGOS_SEMAFORO" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="ID_ID" precision="22" scale="0" not-null="true">
+                    <comment>Identificador principal indicador</comment>
+                </column>
+            </key>
+            <one-to-many class="ec.edu.utpl.svied.model.TdiRangosSemaforo" />
+        </set>
+        <set name="tevaMicrovideoses" table="TEVA_MICROVIDEOS" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="ID_ID" precision="22" scale="0">
+                    <comment>Identificador principal indicador: 188 eva 3 plus; 46 eva</comment>
+                </column>
+            </key>
+            <one-to-many class="ec.edu.utpl.svied.model.TevaMicrovideos" />
+        </set>
+        <set name="theActividadesDocEvaDets" table="THE_ACTIVIDADES_DOC_EVA_DET" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="ID_ID" precision="22" scale="0" not-null="true">
+                    <comment>Identificador prinicpal indicador</comment>
+                </column>
+            </key>
+            <one-to-many class="ec.edu.utpl.svied.model.TheActividadesDocEvaDet" />
+        </set>
+    </class>
+</hibernate-mapping>

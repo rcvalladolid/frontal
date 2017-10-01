@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC "-//Hibernate/Hibernate Configuration DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+  <session-factory>
+    <property name="hibernate.dialect">org.hibernate.dialect.OracleDialect</property>
+    <property name="hibernate.connection.driver_class">oracle.jdbc.OracleDriver</property>
+    <property name="hibernate.connection.url">jdbc:oracle:thin:@172.16.53.33:1521:QABD1</property>
+    <property name="hibernate.connection.username">ESQ_SIEC</property>
+    <property name="hibernate.connection.password">UgSi_Inf@17</property>
+    <property name="hibernate.show_sql">false</property>
+    <property name="hibernate.enable_lazy_load_no_trans">true</property>
+    <property name="hibernate.current_session_context_class">thread</property>
+    <!-- Pojo XML appdoes -->    
+    <mapping resource="ec/edu/utpl/svied/model/TdiPeriodoDetalle.hbm.xml"/>
+    <mapping resource="ec/edu/utpl/svied/model/TdiOfertaNsga.hbm.xml"/>
+    <mapping resource="ec/edu/utpl/svied/model/TdsRolUsuarioUgda.hbm.xml"/>
+    <mapping resource="ec/edu/utpl/svied/model/TdiOfertaDocentesNsga.hbm.xml"/>
+    <mapping resource="ec/edu/utpl/svied/model/TdiCentroUniversitario.hbm.xml"/>
+    <mapping resource="ec/edu/utpl/svied/model/TdsRol.hbm.xml"/>
+    <mapping resource="ec/edu/utpl/svied/model/TdiGlosario.hbm.xml"/>
+    <mapping resource="ec/edu/utpl/svied/model/TdiExcepciones.hbm.xml"/>
+    <mapping resource="ec/edu/utpl/svied/model/TheActividadesEvaAvance.hbm.xml"/>
+    <mapping resource="ec/edu/utpl/svied/model/TdsFiltrosUgda.hbm.xml"/>
+    <mapping resource="ec/edu/utpl/svied/model/TdiDetParametrosIndicador.hbm.xml"/>
+    <mapping resource="ec/edu/utpl/svied/model/TdiDepartamento.hbm.xml"/>
+    <mapping resource="ec/edu/utpl/svied/model/TheActividadesDocEvaDet.hbm.xml"/>
+    <mapping resource="ec/edu/utpl/svied/model/TdsUsuarioUgda.hbm.xml"/>
+    <mapping resource="ec/edu/utpl/svied/model/TdiModalidad.hbm.xml"/>
+    <mapping resource="ec/edu/utpl/svied/model/TdsRegistroAccesosUgda.hbm.xml"/>
+    <mapping resource="ec/edu/utpl/svied/model/TdiDocente.hbm.xml"/>
+    <mapping resource="ec/edu/utpl/svied/model/TdiIndicador.hbm.xml"/>
+    <mapping resource="ec/edu/utpl/svied/model/TdiParametrosIndicador.hbm.xml"/>
+    <mapping resource="ec/edu/utpl/svied/model/TdiNivelAcademico.hbm.xml"/>
+    <mapping resource="ec/edu/utpl/svied/model/TdiRangosSemaforo.hbm.xml"/>
+    <mapping resource="ec/edu/utpl/svied/model/TdiObservacionPersonalizada.hbm.xml"/>
+    <mapping resource="ec/edu/utpl/svied/model/TdiSeccionDepartamental.hbm.xml"/>
+    <mapping resource="ec/edu/utpl/svied/model/TdiComponenteEducativo.hbm.xml"/>
+    <mapping resource="ec/edu/utpl/svied/model/TdiArea.hbm.xml"/>
+    <mapping resource="ec/edu/utpl/svied/model/TdsRolUsuario.hbm.xml"/>
+    <mapping resource="ec/edu/utpl/svied/model/TheActividadesDocEvaCab.hbm.xml"/>
+    <mapping resource="ec/edu/utpl/svied/model/TdiCriteriosEvaluacion.hbm.xml"/>
+    <mapping resource="ec/edu/utpl/svied/model/TdsUsuario.hbm.xml"/>
+    <mapping resource="ec/edu/utpl/svied/model/TdiPeriodo.hbm.xml"/>
+    <mapping resource="ec/edu/utpl/svied/model/TevaMicrovideos.hbm.xml"/>
+  </session-factory>
+</hibernate-configuration>

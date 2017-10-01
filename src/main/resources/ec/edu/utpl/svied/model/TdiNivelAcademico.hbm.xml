@@ -1,0 +1,103 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 01/09/2017 12:34:09 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="ec.edu.utpl.svied.model.TdiNivelAcademico" table="TDI_NIVEL_ACADEMICO" schema="ESQ_SIEC" optimistic-lock="version">
+        <comment>Tabla de nivel academico de SIIN con las equivalencias de otros sistemas a integrar</comment>
+        <id name="naId" type="big_decimal">
+            <column name="NA_ID" precision="22" scale="0" />
+            <generator class="assigned" />
+        </id>
+        <property name="naNombre" type="string">
+            <column name="NA_NOMBRE" length="100" not-null="true">
+                <comment>Nombre Nivel Acad&#233;mico</comment>
+            </column>
+        </property>
+        <property name="naEquIdNsga" type="big_decimal">
+            <column name="NA_EQU_ID_NSGA" precision="22" scale="0">
+                <comment>Indica el ID de la Equivalencia ID Nivel Acad&#233;mico NSGA</comment>
+            </column>
+        </property>
+        <property name="naEquNombreNsga" type="string">
+            <column name="NA_EQU_NOMBRE_NSGA" length="100">
+                <comment>Indica el Nombre de la Equivalencia Nombre Nivel Acad&#233;mico NSGA</comment>
+            </column>
+        </property>
+        <property name="naEquIdSga" type="big_decimal">
+            <column name="NA_EQU_ID_SGA" precision="22" scale="0">
+                <comment>Indica el ID de la Equivalencia ID Nivel Acad&#233;mico SGA</comment>
+            </column>
+        </property>
+        <property name="naEquNombreSga" type="string">
+            <column name="NA_EQU_NOMBRE_SGA" length="100">
+                <comment>Indica el Nombre de la Equivalencia Nombre Nivel Acad&#233;mico SGA</comment>
+            </column>
+        </property>
+        <property name="naEquIdEva" type="big_decimal">
+            <column name="NA_EQU_ID_EVA" precision="22" scale="0">
+                <comment>Indica el ID de la Equivalencia ID Nivel Acad&#233;mico EVA</comment>
+            </column>
+        </property>
+        <property name="naEquNombreEva" type="string">
+            <column name="NA_EQU_NOMBRE_EVA" length="100">
+                <comment>Indica el Nombre de la Equivalencia Nombre Nivel Acad&#233;mico EVA</comment>
+            </column>
+        </property>
+        <property name="naFechaCreacion" type="date">
+            <column name="NA_FECHA_CREACION" length="7" not-null="true">
+                <comment>Indica la Fecha de creaci&#243;n Nivel Acad&#233;mico</comment>
+            </column>
+        </property>
+        <property name="naFechaActualizacion" type="date">
+            <column name="NA_FECHA_ACTUALIZACION" length="7">
+                <comment>Indica la Fecha de actualizaci&#243;n Nivel Acad&#233;mico</comment>
+            </column>
+        </property>
+        <property name="naVigencia" type="string">
+            <column name="NA_VIGENCIA" length="1" not-null="true">
+                <comment>Indica si el Nivel Acad&#233;mico esta vigente o no. S:Si, N:No, Por defecto "S":SI</comment>
+            </column>
+        </property>
+        <property name="naDefinicion" type="string">
+            <column name="NA_DEFINICION" length="500">
+                <comment>Definicion del nivel academico</comment>
+            </column>
+        </property>
+        <property name="naEquIdEc" type="big_decimal">
+            <column name="NA_EQU_ID_EC" precision="22" scale="0">
+                <comment>Creado por: Silvana Vire Fecha creacion: 10/04/2017 Objetivo: Indentificador correspondiente al esquema de educacion continua</comment>
+            </column>
+        </property>
+        <set name="theActividadesDocEvaCabs" table="THE_ACTIVIDADES_DOC_EVA_CAB" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="NA_ID" precision="22" scale="0" not-null="true">
+                    <comment>Nivel academico de la oferta</comment>
+                </column>
+            </key>
+            <one-to-many class="ec.edu.utpl.svied.model.TheActividadesDocEvaCab" />
+        </set>
+        <set name="theActividadesDocEvaDets" table="THE_ACTIVIDADES_DOC_EVA_DET" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="NA_ID" precision="22" scale="0" not-null="true">
+                    <comment>Nivel academico de la oferta</comment>
+                </column>
+            </key>
+            <one-to-many class="ec.edu.utpl.svied.model.TheActividadesDocEvaDet" />
+        </set>
+        <set name="theActividadesEvaAvances" table="THE_ACTIVIDADES_EVA_AVANCE" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="NA_ID" precision="22" scale="0" not-null="true">
+                    <comment>Identificador principal nivel acad&#233;mico de la oferta</comment>
+                </column>
+            </key>
+            <one-to-many class="ec.edu.utpl.svied.model.TheActividadesEvaAvance" />
+        </set>
+        <set name="tdiPeriodoDetalles" table="TDI_PERIODO_DETALLE" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="NA_ID" precision="22" scale="0" />
+            </key>
+            <one-to-many class="ec.edu.utpl.svied.model.TdiPeriodoDetalle" />
+        </set>
+    </class>
+</hibernate-mapping>

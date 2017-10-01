@@ -1,0 +1,80 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 01/09/2017 12:34:09 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="ec.edu.utpl.svied.model.TdiExcepciones" table="TDI_EXCEPCIONES" schema="ESQ_SIEC" optimistic-lock="version">
+        <comment>Almacena las excepciones de cursos ofertados a los que se les debe aplicar un seguimiento o no durante el periodo o semestre</comment>
+        <id name="texId" type="big_decimal">
+            <column name="TEX_ID" precision="22" scale="0" />
+            <generator class="assigned" />
+        </id>
+        <property name="texCodigoCe" type="string">
+            <column name="TEX_CODIGO_CE" length="25">
+                <comment>Este Codigo es el codigo del componente.</comment>
+            </column>
+        </property>
+        <property name="onsId" type="big_decimal">
+            <column name="ONS_ID" precision="22" scale="0" />
+        </property>
+        <property name="texIdCursoEva" type="big_decimal">
+            <column name="TEX_ID_CURSO_EVA" precision="22" scale="0" />
+        </property>
+        <property name="texTipo" type="string">
+            <column name="TEX_TIPO" length="100">
+                <comment>Indica el tipo de excepcion</comment>
+            </column>
+        </property>
+        <property name="texNombre" type="string">
+            <column name="TEX_NOMBRE" length="250">
+                <comment>Nombre de la excepcion</comment>
+            </column>
+        </property>
+        <property name="texDescripcion" type="string">
+            <column name="TEX_DESCRIPCION" length="250">
+                <comment>Descripcion de la excepcion</comment>
+            </column>
+        </property>
+        <property name="texProceso" type="string">
+            <column name="TEX_PROCESO" length="250">
+                <comment>Proceso que usa la excepcion</comment>
+            </column>
+        </property>
+        <property name="texParalelo" type="big_decimal">
+            <column name="TEX_PARALELO" precision="22" scale="0">
+                <comment>Paralelo en caso de que se use como excepcion compuesta por ejemplo: componente y paralelo</comment>
+            </column>
+        </property>
+        <property name="texVigencia" type="java.lang.Character">
+            <column name="TEX_VIGENCIA" length="1">
+                <comment>Indica la vigencia del registro</comment>
+            </column>
+        </property>
+        <property name="texFechaCreacion" type="date">
+            <column name="TEX_FECHA_CREACION" length="7" />
+        </property>
+        <property name="texUsuarioCrea" type="string">
+            <column name="TEX_USUARIO_CREA" length="100" />
+        </property>
+        <property name="texFechaActualizacion" type="date">
+            <column name="TEX_FECHA_ACTUALIZACION" length="7" />
+        </property>
+        <property name="texUsuarioActualiza" type="string">
+            <column name="TEX_USUARIO_ACTUALIZA" length="100" />
+        </property>
+        <property name="doId" type="big_decimal">
+            <column name="DO_ID" precision="22" scale="0" />
+        </property>
+        <property name="peId" type="big_decimal">
+            <column name="PE_ID" precision="22" scale="0" />
+        </property>
+        <set name="theActividadesDocEvaCabs" table="THE_ACTIVIDADES_DOC_EVA_CAB" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="AEC_EXCEPCION" precision="22" scale="0">
+                    <comment>S: Si (en caso de que el registro tiene una excepcion) N:No (en caso de que el registro no tenga excepciones)</comment>
+                </column>
+            </key>
+            <one-to-many class="ec.edu.utpl.svied.model.TheActividadesDocEvaCab" />
+        </set>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 01/09/2017 12:34:09 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="ec.edu.utpl.svied.model.TdiObservacionPersonalizada" table="TDI_OBSERVACION_PERSONALIZADA" schema="ESQ_SIEC" optimistic-lock="version">
+        <id name="opeId" type="big_decimal">
+            <column name="OPE_ID" precision="22" scale="0" />
+            <generator class="assigned" />
+        </id>
+        <property name="opeCodigo" type="string">
+            <column name="OPE_CODIGO" length="30" not-null="true" />
+        </property>
+        <property name="opeDescripcion" type="string">
+            <column name="OPE_DESCRIPCION" length="300" not-null="true" />
+        </property>
+        <property name="opeVigente" type="string">
+            <column name="OPE_VIGENTE" length="1" not-null="true" />
+        </property>
+        <property name="opeMensaje" type="string">
+            <column name="OPE_MENSAJE" length="100">
+                <comment>Campo Creado por: Roberto Valladolid Fecha creacion: 21/10/2016 Comentario: Describe la observaci&#243;n para ponerlo como mensaje en el aplicativo java
+                Objetivo: Visualizar y dar a entender el estado del sem&#225;foro por cada actividad</comment>
+            </column>
+        </property>
+        <set name="theActividadesDocEvaDets" table="THE_ACTIVIDADES_DOC_EVA_DET" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="AED_OBSERVACIONES_ID" precision="22" scale="0">
+                    <comment>Identificador principal nombre de objetivos personalizados</comment>
+                </column>
+            </key>
+            <one-to-many class="ec.edu.utpl.svied.model.TheActividadesDocEvaDet" />
+        </set>
+    </class>
+</hibernate-mapping>

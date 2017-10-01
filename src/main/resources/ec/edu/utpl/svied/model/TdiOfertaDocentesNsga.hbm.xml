@@ -1,0 +1,52 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 01/09/2017 12:34:09 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="ec.edu.utpl.svied.model.TdiOfertaDocentesNsga" table="TDI_OFERTA_DOCENTES_NSGA" schema="ESQ_SIEC" optimistic-lock="version">
+        <id name="odnId" type="big_decimal">
+            <column name="ODN_ID" precision="22" scale="0" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="tdiOfertaNsga" class="ec.edu.utpl.svied.model.TdiOfertaNsga" fetch="select">
+            <column name="ONS_ID" precision="22" scale="0" not-null="true">
+                <comment>Identificador principal de oferta nsga</comment>
+            </column>
+        </many-to-one>
+        <many-to-one name="tdiDocente" class="ec.edu.utpl.svied.model.TdiDocente" fetch="select">
+            <column name="DO_ID" precision="22" scale="0" not-null="true">
+                <comment>Identificador principal del docente</comment>
+            </column>
+        </many-to-one>
+        <property name="ofdIdNsga" type="big_decimal">
+            <column name="OFD_ID_NSGA" precision="22" scale="0" not-null="true">
+                <comment>Identificador de la tabla tsga_oferta_detalle del NSGA</comment>
+            </column>
+        </property>
+        <property name="odnFechaRegistroSiec" type="date">
+            <column name="ODN_FECHA_REGISTRO_SIEC" length="7" not-null="true">
+                <comment>Indica la fecha de registro de la infromacion en el SIEC</comment>
+            </column>
+        </property>
+        <property name="odnFechaUltActSiec" type="date">
+            <column name="ODN_FECHA_ULT_ACT_SIEC" length="7">
+                <comment>Indica la fecha de la ultima actualiacion de la infromacion en el SIEC</comment>
+            </column>
+        </property>
+        <property name="odnExistePreDistributivo" type="string">
+            <column name="ODN_EXISTE_PRE_DISTRIBUTIVO" length="1">
+                <comment>Indica si el docente esta registrado en el PREDISTRIBUTIVO</comment>
+            </column>
+        </property>
+        <property name="odnProcesoEtl" type="string">
+            <column name="ODN_PROCESO_ETL" length="50">
+                <comment>Indica el proceso de ETL que genera los datos desde el origen de datos NSGA</comment>
+            </column>
+        </property>
+        <property name="odnVigente" type="string">
+            <column name="ODN_VIGENTE" length="1">
+                <comment>Indica si el docente sigue siendo aquel que fue asignado a la oferta: S:Vigente, N:No vigente</comment>
+            </column>
+        </property>
+    </class>
+</hibernate-mapping>

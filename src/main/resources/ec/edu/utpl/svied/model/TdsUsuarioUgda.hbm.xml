@@ -1,0 +1,53 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 01/09/2017 12:34:09 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="ec.edu.utpl.svied.model.TdsUsuarioUgda" table="TDS_USUARIO_UGDA" schema="ESQ_SIEC" optimistic-lock="version">
+        <comment>Almacena los usuarios que tendr&#225;n acceso a la informaci&#243;n</comment>
+        <id name="usuId" type="big_decimal">
+            <column name="USU_ID" precision="22" scale="0" />
+            <generator class="assigned" />
+        </id>
+        <property name="usuIdentificacion" type="string">
+            <column name="USU_IDENTIFICACION" length="80" not-null="true" />
+        </property>
+        <property name="usuNombres" type="string">
+            <column name="USU_NOMBRES" length="250" not-null="true">
+                <comment>Indica el Nombre de usuario</comment>
+            </column>
+        </property>
+        <property name="usuFechaInicioVig" type="date">
+            <column name="USU_FECHA_INICIO_VIG" length="7" not-null="true" />
+        </property>
+        <property name="usuFechaFinVig" type="date">
+            <column name="USU_FECHA_FIN_VIG" length="7" />
+        </property>
+        <property name="usuActivo" type="string">
+            <column name="USU_ACTIVO" length="1" not-null="true" />
+        </property>
+        <property name="usuUsername" type="string">
+            <column name="USU_USERNAME" length="80" />
+        </property>
+        <property name="usuPassword" type="string">
+            <column name="USU_PASSWORD" length="80" />
+        </property>
+        <property name="usuCod" type="big_decimal">
+            <column name="USU_COD" precision="22" scale="0" />
+        </property>
+        <property name="usuEnvioMail" type="big_decimal">
+            <column name="USU_ENVIO_MAIL" precision="22" scale="0" />
+        </property>
+        <property name="usuUltFechaEnvioMail" type="string">
+            <column name="USU_ULT_FECHA_ENVIO_MAIL" length="50" />
+        </property>
+        <set name="tdsRolUsuarioUgdas" table="TDS_ROL_USUARIO_UGDA" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="US_ID" precision="22" scale="0" not-null="true">
+                    <comment>Identificador principal de usuario</comment>
+                </column>
+            </key>
+            <one-to-many class="ec.edu.utpl.svied.model.TdsRolUsuarioUgda" />
+        </set>
+    </class>
+</hibernate-mapping>
