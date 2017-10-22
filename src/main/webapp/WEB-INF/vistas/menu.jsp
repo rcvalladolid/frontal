@@ -8,6 +8,7 @@
 <c:url value="/seguimiento_310" var="eva_310"/>
 <c:url value="/autor" var="autor"/>
 <c:url value="/planificacion" var="planificacion"/>
+<c:url value="/dashboard" var="dashboard"/>
 
 
 <!DOCTYPE html>
@@ -104,6 +105,9 @@
                         </a>-->                    
                         <a href="${eva_310}" class="btn btn-block btn-social btn-default text-green">
                             <i class="fa fa-line-chart" aria-hidden="true"></i> Seguimiento académico a las actividades del Docente en el E.V.A. - M.A.D Grado&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        </a>
+                        <a href="${dashboard}" class="btn btn-block btn-social btn-default text-info">
+                            <i class="fa fa-line-chart" aria-hidden="true"></i> unir&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                         </a>
                     </div>
                 </s:authorize>

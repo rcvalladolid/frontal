@@ -3,11 +3,11 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>edu.utpl</groupId>
-    <artifactId>xapi</artifactId>
+    <artifactId>eva</artifactId>
     <version>1</version>
     <packaging>war</packaging>
 
-    <name>xapi</name>
+    <name>eva</name>
 
     <properties>
         <endorsed.dir>${project.build.directory}/endorsed</endorsed.dir>
@@ -159,7 +159,7 @@
                 <artifactId>maven-war-plugin</artifactId>
                 <version>2.4</version>
                 <configuration>
-                    <warName>xapi</warName>
+                    <warName>eva</warName>
                     <failOnMissingWebXml>false</failOnMissingWebXml>
                 </configuration>
             </plugin>

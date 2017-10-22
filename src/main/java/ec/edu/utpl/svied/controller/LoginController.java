@@ -171,14 +171,14 @@ public class LoginController {
     @RequestMapping(value = {"/planificacion"}, method = RequestMethod.GET)
     public String paginaPlanificacionActividadesEva(ModelMap model, HttpServletRequest request) {
         TdsUsuarioUgda usuario = loginService.getUserUsername(getPrincipal());
-        BigDecimal[] peId = {new BigDecimal(310)};        
+        BigDecimal[] peId = {new BigDecimal(310)};
         List<Object> lista_docentes = evaService.listarDocentesEva(peId);
         model.addAttribute("usuario", usuario);
         model.addAttribute("docentes_eva", lista_docentes);
-        request.setAttribute("docente_login", usuario.getUsuCod());       
-        
+        request.setAttribute("docente_login", usuario.getUsuCod());
+
         return "seguimiento/eva_docente_planificacion";
-        
+
     }
 
     /*Periodo Oct/2017-Feb/2018*/
@@ -209,6 +209,22 @@ public class LoginController {
         request.setAttribute("docente_login", usuario.getUsuCod());
         model.addAttribute("ultima_actualizacion", ultima_actualizacion);
         return "seguimiento/eva_semaforos_310";
+    }
+
+    @RequestMapping(value = {"/dashboard"}, method = RequestMethod.GET)
+    public String paginaDashboardEva(ModelMap model, HttpServletRequest request) {
+
+        BigDecimal[] peId = {new BigDecimal(307)};
+        TdsUsuarioUgda usuario = loginService.getUserUsername(getPrincipal());
+        List<Object> lista_docentes_eva = evaService.listarDocentesEva(peId);
+        //String ultima_actualizacion = evaService.ultimaFechaActualizacion();            
+
+        model.addAttribute("usuario", usuario);
+        request.setAttribute("docente", usuario.getUsuCod());
+        model.addAttribute("docentes_eva", lista_docentes_eva);
+        request.setAttribute("docente_login", usuario.getUsuCod());
+        //model.addAttribute("ultima_actualizacion", ultima_actualizacion);
+        return "dashboard";
     }
 
     @RequestMapping(value = "/logout", method = RequestMethod.GET)

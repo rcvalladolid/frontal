@@ -136,7 +136,7 @@
                                     <ul class="list-unstyled" style="line-height: 2">                                        
                                         <li><span class="fa fa-check text-yellow"></span> Anuncios Académicos.</li>
                                         <li><span class="fa fa-check text-yellow"></span> Foros Académicos.</li>                                                                                
-                                        <li><span class="fa fa-check text-yellow"></span> Chats Académicos.</li>                                        
+                                        <li><span class="fa fa-check text-yellow"></span> Chats Tutoría.</li>                                        
                                     </ul>
                                 </div>
                             </div>
